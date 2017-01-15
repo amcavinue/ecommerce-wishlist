@@ -1,0 +1,17 @@
+language: node_js
+node_js: node
+services:
+- mongodb
+addons:
+  apt:
+    sources:
+    - mongodb-3.2-precise
+    packages:
+    - mongodb-org-server
+deploy:
+  provider: heroku
+  api_key:
+    secure: TG7NMOH5JcPefpWnHIrO6wV7udQ1XqWDDELvVAlp94reoDNEaEWV6GR0c95B2SgJDPOwi5UlLagpbxPw7vicogGDbNnLcqRylA0UY92g7XRyXKoobPXn3GcacUyAAuVyX++cKa2JOAQihBnUy+57Q/0/RjtKKPAXGgMl1mE7EyQ4E1dIkIv4gylBHyno4yPBmE8wSWBkYe9x3kNgTeFpO7osu3+Dypd8CIvQGZXnaMs9UhCRr+oSFR4ZttG6hIwaW3xEFgyg3jkIGjgG7HD4Ee0a70GAWeBzQX9PMqH0BzRfR3HrLwuGF0tPO+QAGeh8La8keNTmS2uA3OiThQFU3lx89eyaJq1ZV4xv/TYqojacEuzo36pIelcvB77jNLVXSdiZhx3JNc/JpYVPs5/wB4OIPJ0bFzLd4S119PCNYNJay/gKDOwLjFqAlZKsOUsUyYLL78lV3jZupqyXMexfiu1JmMqjZDxgGSlhW16CR00P6Cn3oob0sC3412UU4VlrK97GkxD209Okeeaovzm0pfg9Is9IDN/EGxqr6gA749Id48aD2ovCvhofzWltXQITWL0Rpsygd7ExkPtgFEzgYsGKN73TthXC80o7tOSzerLkYqn8xrvjFFn/aII1PyWke+kMTATQCnHVNu4g3hwPFMji7VGvgmEPoc7wgt2a1Uc=
+  app: powerful-island-41601
+  on:
+    repo: amcavinue/ecommerce-wishlist
