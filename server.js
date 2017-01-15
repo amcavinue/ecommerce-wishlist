@@ -5,8 +5,6 @@ var mongoose = require('mongoose');
 var config = require('./config');
 
 var app = express();
-
-var app = express();
 app.use(express.static('build'));  // Serve the build folder.
 app.use(bodyParser.json()); // Used for getting parameters in post requests.
 
