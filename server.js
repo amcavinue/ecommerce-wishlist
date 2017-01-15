@@ -5,7 +5,8 @@ var mongoose = require('mongoose');
 var config = require('./config');
 
 var app = express();
-app.use(express.static('build'));  // Serve the build folder.
+app.use(express.static('build')); // Serve the build folder.
+app.use('/modules', express.static(__dirname + '/node_modules/')); // Serve the node_modules folder.
 app.use(bodyParser.json()); // Used for getting parameters in post requests.
 
 var runServer = function(callback) {
