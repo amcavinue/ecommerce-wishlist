@@ -3,6 +3,7 @@ const ReactDOM = require('react-dom');
 const connect = require('react-redux').connect;
 
 const actions = require('../actions/index');
+const Login = require('./login');
 
 const EcommerceApp = React.createClass({
   render() {
@@ -32,14 +33,14 @@ const EcommerceApp = React.createClass({
         </nav>
         
         <div className="container">
-          <h1 className="text-center">Ecommerce App</h1>
+          <Login />
         </div>
       </div>
     );
   }
 });
 
-const mapStateToProps = function(state, props) {
+const mapStateToProps = (state, props) => {
   return {
     data1: state.data1,
     data2: state.data2
