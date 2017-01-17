@@ -2,9 +2,11 @@ const React = require('react');
 const ReactDOM = require('react-dom');
 const connect = require('react-redux').connect;
 
+const NewUser = require('./new-user');
+
 const Login = (props) => {
   return (
-    <div>
+    <div className="login-component">
       <h1 className="text-center">Login to the Ecommerce App</h1>
       <div className="row">
         <div className="col-xs-12 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
@@ -21,8 +23,11 @@ const Login = (props) => {
               </div>
             </fieldset>
         
-            <input type="submit" value="Submit" name="submit" className="btn btn-primary col-xs-12" />
+            <input id="login-submit" type="submit" value="Submit" name="submit" className="btn btn-primary col-xs-12" />
           </form>
+          
+          <a className="new-account-link" href="#">Don't have an account? Create one here.</a>
+          <NewUser />
         </div>
       </div>
     </div>
