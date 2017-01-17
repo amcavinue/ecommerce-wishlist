@@ -15,24 +15,36 @@ const Login = React.createClass({
                 <div className="form-group">
                   <label className="" htmlFor="username">Username</label>
                   <Validation.components.Input 
-                  className="form-control" type="text" 
-                  id="username" name="username" 
-                  validations={['required']} 
-                  value="" required />
+                    className="form-control" 
+                    type="text" 
+                    id="username" 
+                    name="username" 
+                    validations={['required']} 
+                    value="" 
+                    required 
+                  />
                 </div>
                 
                 <div className="form-group">
                   <label className="" htmlFor="password">Password</label>
                   <Validation.components.Input 
-                  className="form-control" type="password" 
-                  id="password" name="password" 
-                  validations={['required']} 
-                  value="" required />
+                    className="form-control" 
+                    type="password" 
+                    id="password" 
+                    name="password" 
+                    validations={['required']} 
+                    value="" 
+                    required 
+                  />
                 </div>
               </fieldset>
           
-              <input id="login-submit" type="submit" value="Submit" 
-              name="submit" className="btn btn-primary col-xs-12" />
+              <input 
+              id="login-submit" 
+              type="submit" 
+              value="Submit" 
+              name="submit" 
+              className="btn btn-primary col-xs-12" />
             </Validation.components.Form>
             
             <a className="new-account-link" onClick={this.props.showNewUser} href="#">

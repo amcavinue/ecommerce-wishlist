@@ -27,7 +27,7 @@ Object.assign(Validation.rules, {
   
       return password.value === passwordConfirm.value;
     },
-    hint: () => <span className="form-error is-visible">Passwords should be equal.</span>
+    hint: () => <span className="form-error is-visible">The passwords do not match.</span>
   }
 });
 
