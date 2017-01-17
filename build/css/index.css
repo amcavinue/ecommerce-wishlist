@@ -2,4 +2,19 @@
   margin: 0;
   padding: 0;
 }
+.container {
+  padding: 0 1em;
+}
+.form-error {
+  color: red;
+}
+.login-component {
+  text-align: center;
+}
+.login-component .login-component-form {
+  text-align: left;
+}
+.login-component .login-component-form #login-submit {
+  margin-bottom: 1em;
+}
 /*# sourceMappingURL=index.css.map */
