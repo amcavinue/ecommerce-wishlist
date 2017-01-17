@@ -63,6 +63,7 @@
   "dependencies": {
     "body-parser": "^1.15.2",
     "bootstrap": "^3.3.7",
+    "classnames": "^2.2.5",
     "express": "^4.14.0",
     "isomorphic-fetch": "^2.2.1",
     "jquery": "^2.2.4",
@@ -72,7 +73,9 @@
     "react-addons-update": "^15.4.2",
     "react-dom": "^15.3.1",
     "react-redux": "^4.4.5",
+    "react-validation": "^2.10.9",
     "redux": "^3.6.0",
-    "redux-thunk": "^2.1.0"
+    "redux-thunk": "^2.1.0",
+    "validator": "^6.2.1"
   }
 }

@@ -5,13 +5,16 @@
 .container {
   padding: 0 1em;
 }
+.form-error {
+  color: red;
+}
 .login-component {
   text-align: center;
 }
-.login-component form {
+.login-component .login-component-form {
   text-align: left;
 }
-.login-component form #login-submit {
+.login-component .login-component-form #login-submit {
   margin-bottom: 1em;
 }
 /*# sourceMappingURL=index.css.map */

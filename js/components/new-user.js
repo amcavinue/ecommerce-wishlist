@@ -8,25 +8,30 @@ const NewUser = (props) => {
       <h1 className="text-center">Create a new account</h1>
       <div className="row">
           <div className="col-xs-12 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
-            <form className="" action="" method="">
+            <form className="new-user-component-form">
               <fieldset>
                 <div className="form-group">
                   <label className="" htmlFor="username">Create a Username</label>
-                  <input className="form-control" type="text" id="username" name="username" />
+                  <input className="form-control" type="text" 
+                  id="username" name="username" required />
                 </div>
                 
                 <div className="form-group">
                   <label className="" htmlFor="password">Enter a Password</label>
-                  <input className="form-control" type="text" id="password" name="password" />
+                  <input className="form-control" type="password" 
+                  id="password" name="password" required />
                 </div>
                 
                 <div className="form-group">
                   <label className="" htmlFor="repeat-password">Repeat Password</label>
-                  <input className="form-control" type="text" id="repeat-password" name="repeat-password" />
+                  <input className="form-control" type="password" 
+                  id="repeat-password" name="repeat-password" 
+                  data-match="#password" required />
                 </div>
               </fieldset>
           
-              <input id="login-submit" type="submit" value="Submit" name="submit" className="btn btn-primary col-xs-12" />
+              <input id="login-submit" type="submit" value="Submit" 
+              name="submit" className="btn btn-primary col-xs-12" />
             </form>
           </div>
         </div>

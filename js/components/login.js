@@ -1,6 +1,7 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
 const connect = require('react-redux').connect;
+const Validation = require('./../validation-rules');
 
 const Login = React.createClass({
   render() {
@@ -9,23 +10,34 @@ const Login = React.createClass({
         <h1 className="text-center">Login to the Ecommerce App</h1>
         <div className="row">
           <div className="col-xs-12 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
-            <form className="" action="" method="">
+            <Validation.components.Form className="login-component-form">
               <fieldset>
                 <div className="form-group">
                   <label className="" htmlFor="username">Username</label>
-                  <input className="form-control" type="text" id="username" name="username" />
+                  <Validation.components.Input 
+                  className="form-control" type="text" 
+                  id="username" name="username" 
+                  validations={['required']} 
+                  value="" required />
                 </div>
                 
                 <div className="form-group">
                   <label className="" htmlFor="password">Password</label>
-                  <input className="form-control" type="text" id="password" name="password" />
+                  <Validation.components.Input 
+                  className="form-control" type="password" 
+                  id="password" name="password" 
+                  validations={['required']} 
+                  value="" required />
                 </div>
               </fieldset>
           
-              <input id="login-submit" type="submit" value="Submit" name="submit" className="btn btn-primary col-xs-12" />
-            </form>
+              <input id="login-submit" type="submit" value="Submit" 
+              name="submit" className="btn btn-primary col-xs-12" />
+            </Validation.components.Form>
             
-            <a className="new-account-link" onClick={this.props.showNewUser} href="#">Don't have an account? Create one here.</a>
+            <a className="new-account-link" onClick={this.props.showNewUser} href="#">
+              Don't have an account? Create one here.
+            </a>
           </div>
         </div>
       </div>
