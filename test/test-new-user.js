@@ -21,7 +21,7 @@ describe('NewUser Component', () => {
     );
     let result = renderer.getRenderOutput();
     
-    // Test the Login component.
+    // Test the component.
     TestUtils.isElementOfType(result, NewUser);
     TestUtils.isCompositeComponent(result);
     

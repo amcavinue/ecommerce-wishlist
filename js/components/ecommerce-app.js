@@ -7,25 +7,7 @@ const Login = require('./login');
 const NewUser = require('./new-user');
 
 const EcommerceApp = React.createClass({
-  getInitialState() {
-    return {
-      newUser: false
-    };
-  },
-  showNewUser() {
-    this.setState({
-      newUser: true
-    });
-  },
   render() {
-    let currentComponent = null;
-    
-    if (this.state.newUser) {
-      currentComponent = <NewUser />;
-    } else {
-      currentComponent = <Login showNewUser={this.showNewUser} />;
-    }
-    
     return (
       <div>
         <nav className="navbar navbar-default">
@@ -54,7 +36,7 @@ const EcommerceApp = React.createClass({
         </nav>
         
         <div className="container">
-          {currentComponent}
+          {this.props.children}
         </div>
       </div>
     );
