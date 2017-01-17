@@ -2,8 +2,6 @@ const React = require('react');
 const ReactDOM = require('react-dom');
 const connect = require('react-redux').connect;
 
-const NewUser = require('./new-user');
-
 const Login = React.createClass({
   render() {
     return (
