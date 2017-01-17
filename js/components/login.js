@@ -2,6 +2,9 @@ const React = require('react');
 const ReactDOM = require('react-dom');
 const connect = require('react-redux').connect;
 const Validation = require('./../validation-rules');
+const router = require('react-router');
+const Link = router.Link;
+const IndexLink = router.IndexLink;
 
 const Login = React.createClass({
   render() {
@@ -47,9 +50,9 @@ const Login = React.createClass({
               className="btn btn-primary col-xs-12" />
             </Validation.components.Form>
             
-            <a className="new-account-link" onClick={this.props.showNewUser} href="#">
+            <Link className="new-account-link" onClick={this.props.showNewUser} to={'/newuser'}>
               Don't have an account? Create one here.
-            </a>
+            </Link>
           </div>
         </div>
       </div>

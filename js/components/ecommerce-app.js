@@ -1,10 +1,9 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
 const connect = require('react-redux').connect;
-
-const actions = require('../actions/index');
-const Login = require('./login');
-const NewUser = require('./new-user');
+const router = require('react-router');
+const Link = router.Link;
+const IndexLink = router.IndexLink;
 
 const EcommerceApp = React.createClass({
   render() {
@@ -22,14 +21,13 @@ const EcommerceApp = React.createClass({
                 <span className="icon-bar"></span>
                 <span className="icon-bar"></span>
               </button>
-              <a className="navbar-brand" href="#">Ecommerce Wishlist</a>
+              <Link className="navbar-brand" to={'/'}>Ecommerce Wishlist</Link>
             </div>
         
             <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul className="nav navbar-nav navbar-right">
-                <li className="active"><a href="#">Link</a></li>
-                <li><a href="#">Link</a></li>
-                <li><a href="#">Link</a></li>
+                <li className="active"><Link to={'/login'}>Login</Link></li>
+                <li><Link to={'/newuser'}>Sign Up</Link></li>
               </ul>
             </div>{/* /.navbar-collapse */}
           </div>{/* /.container-fluid */}
