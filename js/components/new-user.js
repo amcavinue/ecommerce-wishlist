@@ -5,7 +5,7 @@ const connect = require('react-redux').connect;
 const NewUser = (props) => {
   return (
     <div className="new-user-component">
-      <h2>New User Test</h2>
+      <h1>Create a new account</h1>
     </div>
   );
 };

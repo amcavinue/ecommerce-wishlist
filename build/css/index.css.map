@@ -1,1 +1,1 @@
-{"version":3,"sources":["../less/index.less","../less/login.less","../less/new-user.less"],"names":[],"mappings":"AAAA;EACE,SAAA;EACA,UAAA;;AAGF;EACE,cAAA;;ACNF;EACE,kBAAA;;AADF,gBAGE;EACE,gBAAA;;AAJJ,gBAGE,KAGE;EACE,kBAAA;;ACPN;EACE,gBAAA","file":"index.css"}
+{"version":3,"sources":["../less/index.less","../less/login.less"],"names":[],"mappings":"AAAA;EACE,SAAA;EACA,UAAA;;AAGF;EACE,cAAA;;ACNF;EACE,kBAAA;;AADF,gBAGE;EACE,gBAAA;;AAJJ,gBAGE,KAGE;EACE,kBAAA","file":"index.css"}
