@@ -6,6 +6,15 @@ const Link = router.Link;
 const IndexLink = router.IndexLink;
 
 const EcommerceApp = React.createClass({
+  createMenu() {
+    /*
+    Get the location -- Highlight will differ.
+    Get if the user is logged in or not -- Menu will differ.
+    Get the list of pages.
+    
+    Create the jsx from the list of pages and above data.
+    */
+  },
   render() {
     return (
       <div>
@@ -44,7 +53,10 @@ const EcommerceApp = React.createClass({
 const mapStateToProps = (state, props) => {
   return {
     data1: state.data1,
-    data2: state.data2
+    data2: state.data2,
+    isLoggedIn: state.isLoggedIn,
+    loggedOutPages: state.loggedOutPages,
+    loggedInPages: state.loggedInPages
   };
 };
 
