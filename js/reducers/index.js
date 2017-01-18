@@ -10,11 +10,11 @@ const initialState = {
     loggedOutPages: [
       {
         text: 'Login',
-        path: '/login'
+        path: '/login'  // All paths must have preceding '/'.
       },
       {
         text: 'Sign Up',
-        path: 'newuser'
+        path: '/newuser'
       }
     ], // The ordering of these pages affects the order of the menu.
     loggedInPages: [
@@ -24,7 +24,7 @@ const initialState = {
       },
       {
         text: 'Sign Up',
-        path: 'newuser'
+        path: '/newuser'
       }
     ] // The ordering of these pages affects the order of the menu.
 };
@@ -37,9 +37,24 @@ const data2Reducer = (state = initialState.data2, action) => {
     return state;
 };
 
+const loggedInReducer = (state = initialState.isLoggedIn, action) => {
+  return state;
+}
+
+const loggedOutPagesReducer = (state = initialState.loggedOutPages, action) => {
+  return state;
+}
+
+const loggedInPagesReducer = (state = initialState.loggedInPages, action) => {
+  return state;
+}
+
 const reducer = combineReducers({
     data1: data1Reducer,
     data2: data2Reducer,
+    isLoggedIn: loggedInReducer,
+    loggedOutPages: loggedOutPagesReducer,
+    loggedInPages: loggedInPagesReducer
 });
 
 exports.reducer = reducer;

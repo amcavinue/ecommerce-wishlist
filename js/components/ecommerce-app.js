@@ -5,15 +5,26 @@ const router = require('react-router');
 const Link = router.Link;
 const IndexLink = router.IndexLink;
 
+const store = require('../store');
+
 const EcommerceApp = React.createClass({
   createMenu() {
-    /*
-    Get the location -- Highlight will differ.
-    Get if the user is logged in or not -- Menu will differ.
-    Get the list of pages.
+    let state = store.getState();
+    let currPath = this.props.location.pathname;
+    let pages;
     
-    Create the jsx from the list of pages and above data.
-    */
+    if (state.isLoggedIn) {
+      pages = state.loggedInPages;
+    } else {
+      pages = state.loggedOutPages;
+    }
+    
+    return pages.map((page, i, arr) => {
+      if (page.path === currPath) {
+        return <li key={i} className="active"><Link to={page.path}>{page.text}</Link></li>;
+      }
+      return <li key={i}><Link to={page.path}>{page.text}</Link></li>;
+    });
   },
   render() {
     return (
@@ -35,8 +46,7 @@ const EcommerceApp = React.createClass({
         
             <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul className="nav navbar-nav navbar-right">
-                <li className="active"><Link to={'/login'}>Login</Link></li>
-                <li><Link to={'/newuser'}>Sign Up</Link></li>
+                {this.createMenu()}
               </ul>
             </div>{/* /.navbar-collapse */}
           </div>{/* /.container-fluid */}
