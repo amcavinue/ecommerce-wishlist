@@ -1,31 +1,32 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
 const connect = require('react-redux').connect;
+const router = require('react-router');
+const Link = router.Link;
+const IndexLink = router.IndexLink;
 
-const actions = require('../actions/index');
-const Login = require('./login');
-const NewUser = require('./new-user');
+const store = require('../store');
 
 const EcommerceApp = React.createClass({
-  getInitialState() {
-    return {
-      newUser: false
-    };
-  },
-  showNewUser() {
-    this.setState({
-      newUser: true
+  createMenu() {
+    let state = store.getState();
+    let currPath = this.props.location.pathname;
+    let pages;
+    
+    if (state.isLoggedIn) {
+      pages = state.loggedInPages;
+    } else {
+      pages = state.loggedOutPages;
+    }
+    
+    return pages.map((page, i, arr) => {
+      if (page.path === currPath) {
+        return <li key={i} className="active"><Link to={page.path}>{page.text}</Link></li>;
+      }
+      return <li key={i}><Link to={page.path}>{page.text}</Link></li>;
     });
   },
   render() {
-    let currentComponent = null;
-    
-    if (this.state.newUser) {
-      currentComponent = <NewUser />;
-    } else {
-      currentComponent = <Login showNewUser={this.showNewUser} />;
-    }
-    
     return (
       <div>
         <nav className="navbar navbar-default">
@@ -40,21 +41,19 @@ const EcommerceApp = React.createClass({
                 <span className="icon-bar"></span>
                 <span className="icon-bar"></span>
               </button>
-              <a className="navbar-brand" href="#">Ecommerce Wishlist</a>
+              <Link className="navbar-brand" to={'/'}>Ecommerce Wishlist</Link>
             </div>
         
             <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul className="nav navbar-nav navbar-right">
-                <li className="active"><a href="#">Link</a></li>
-                <li><a href="#">Link</a></li>
-                <li><a href="#">Link</a></li>
+                {this.createMenu()}
               </ul>
             </div>{/* /.navbar-collapse */}
           </div>{/* /.container-fluid */}
         </nav>
         
         <div className="container">
-          {currentComponent}
+          {this.props.children}
         </div>
       </div>
     );
@@ -64,7 +63,10 @@ const EcommerceApp = React.createClass({
 const mapStateToProps = (state, props) => {
   return {
     data1: state.data1,
-    data2: state.data2
+    data2: state.data2,
+    isLoggedIn: state.isLoggedIn,
+    loggedOutPages: state.loggedOutPages,
+    loggedInPages: state.loggedInPages
   };
 };
 

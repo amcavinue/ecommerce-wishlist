@@ -2,6 +2,9 @@ const React = require('react');
 const ReactDOM = require('react-dom');
 const connect = require('react-redux').connect;
 const Validation = require('./../validation-rules');
+const router = require('react-router');
+const Link = router.Link;
+const IndexLink = router.IndexLink;
 
 const NewUser = (props) => {
   return (

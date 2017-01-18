@@ -5,12 +5,12 @@ const Provider = require('react-redux').Provider;
 
 const actions = require('./actions/index');
 const store = require('./store');
-const EcommerceApp = require('./components/ecommerce-app');
+const Routes = require('./routes');
 
 document.addEventListener('DOMContentLoaded', () => {  
   ReactDOM.render(
     <Provider store={store}>
-      <EcommerceApp />
+      <Routes />
     </Provider>,
     document.getElementById('app')
   );
