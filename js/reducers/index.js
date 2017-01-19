@@ -4,8 +4,6 @@ const update = require('react-addons-update');
 const combineReducers = require('redux').combineReducers;
 
 const initialState = {
-    data1: null,
-    data2: null,
     isLoggedIn: false,
     loggedOutPages: [
       {
@@ -29,14 +27,6 @@ const initialState = {
     ] // The ordering of these pages affects the order of the menu.
 };
 
-const data1Reducer = (state = initialState.data1, action) => {
-    return state;
-};
-
-const data2Reducer = (state = initialState.data2, action) => {
-    return state;
-};
-
 const loggedInReducer = (state = initialState.isLoggedIn, action) => {
   return state;
 }
@@ -50,8 +40,6 @@ const loggedInPagesReducer = (state = initialState.loggedInPages, action) => {
 }
 
 const reducer = combineReducers({
-    data1: data1Reducer,
-    data2: data2Reducer,
     isLoggedIn: loggedInReducer,
     loggedOutPages: loggedOutPagesReducer,
     loggedInPages: loggedInPagesReducer

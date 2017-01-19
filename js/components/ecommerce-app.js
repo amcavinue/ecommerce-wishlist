@@ -62,8 +62,6 @@ const EcommerceApp = React.createClass({
 
 const mapStateToProps = (state, props) => {
   return {
-    data1: state.data1,
-    data2: state.data2,
     isLoggedIn: state.isLoggedIn,
     loggedOutPages: state.loggedOutPages,
     loggedInPages: state.loggedInPages
