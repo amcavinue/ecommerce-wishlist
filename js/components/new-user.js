@@ -54,13 +54,13 @@ const NewUser = (props) => {
                 </div>
               </fieldset>
           
-              <input 
+              <Validation.components.Button 
                 id="login-submit" 
                 type="submit" 
-                value="Submit" 
                 name="submit" 
-                className="btn btn-primary col-xs-12" 
-              />
+                className="btn btn-primary col-xs-12">
+                Submit
+              </Validation.components.Button>
             </Validation.components.Form>
           </div>
         </div>
