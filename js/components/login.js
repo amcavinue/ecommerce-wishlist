@@ -6,7 +6,14 @@ const router = require('react-router');
 const Link = router.Link;
 const IndexLink = router.IndexLink;
 
+const store = require('../store');
+const actions = require('../actions/index');
+
 const Login = React.createClass({
+  submit(e) {
+    e.preventDefault();
+    store.dispatch(actions.fetchLogin);
+  },
   render() {
     return (
       <div className="login-component">
@@ -42,15 +49,17 @@ const Login = React.createClass({
                 </div>
               </fieldset>
           
-              <input 
+              <Validation.components.Button 
               id="login-submit" 
               type="submit" 
-              value="Submit" 
               name="submit" 
-              className="btn btn-primary col-xs-12" />
+              className="btn btn-primary col-xs-12"
+              onClick={this.submit}>
+                Submit
+              </Validation.components.Button>
             </Validation.components.Form>
             
-            <Link className="new-account-link" onClick={this.props.showNewUser} to={'/newuser'}>
+            <Link className="new-account-link" to={'/newuser'}>
               Don't have an account? Create one here.
             </Link>
           </div>
