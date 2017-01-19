@@ -6,11 +6,19 @@ const router = require('react-router');
 const Link = router.Link;
 const IndexLink = router.IndexLink;
 
-const NewUser = (props) => {
-  return (
-    <div className="new-user-component">
-      <h1 className="text-center">Create a new account</h1>
-      <div className="row">
+const store = require('../store');
+const actions = require('../actions/index');
+
+const NewUser = React.createClass({
+  submit(e) {
+    e.preventDefault();
+    store.dispatch(actions.fetchNewUser);
+  },
+  render() {
+    return (
+      <div className="new-user-component">
+        <h1 className="text-center">Create a new account</h1>
+        <div className="row">
           <div className="col-xs-12 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
             <Validation.components.Form className="new-user-component-form">
               <fieldset>
@@ -58,14 +66,16 @@ const NewUser = (props) => {
                 id="login-submit" 
                 type="submit" 
                 name="submit" 
-                className="btn btn-primary col-xs-12">
+                className="btn btn-primary col-xs-12"
+                onClick={this.submit}>
                 Submit
               </Validation.components.Button>
             </Validation.components.Form>
           </div>
         </div>
-    </div>
-  );
-};
+      </div>
+    );
+  }
+});
 
 module.exports = NewUser;
