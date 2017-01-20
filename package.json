@@ -61,6 +61,7 @@
     "webpack": "^1.13.1"
   },
   "dependencies": {
+    "amazon-product-api": "^0.4.2",
     "body-parser": "^1.15.2",
     "bootstrap": "^3.3.7",
     "classnames": "^2.2.5",
