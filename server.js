@@ -4,8 +4,8 @@ const mongoose = require('mongoose');
 const amazon = require('amazon-product-api');
 var process = require('process');
 
-/*process.env = Object.assign(process.env, require('./amazon-config'));
-const config = require('./config');*/
+/*process.env = Object.assign(process.env, require('./amazon-config'));*/
+const config = require('./config');
 
 const app = express();
 app.use(express.static('build')); // Serve the build folder.
