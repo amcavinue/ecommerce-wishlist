@@ -26,6 +26,22 @@ const client = amazon.createClient({
   awsSecret: process.env.AWS_SECRET
 });
 
+const lookup = () => {
+  client.itemSearch({
+    keywords: 'towel',
+    itemPage: 3,
+    responseGroup: 'ItemAttributes,Offers,Images'
+  }).then(function(results){
+    debugger;
+    console.log(results, 33);
+  }).catch(function(err){
+    debugger;
+    console.log(err, 35);
+  });
+};
+
+lookup();
+
 /**
  * Routes
  */
