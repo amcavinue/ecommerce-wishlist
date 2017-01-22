@@ -3,10 +3,12 @@ const chaiHttp = require('chai-http');
 const should = chai.should();
 const expect = chai.expect;
 const fs = require('fs');
+const mongoose = require('mongoose');
 
 chai.use(chaiHttp);
 
-var server = require('../server.js');
+const server = require('../server.js');
+const User = require('../models/user');
 const app = server.app;
 
 describe('Wishlist Server', () => {
@@ -16,11 +18,19 @@ describe('Wishlist Server', () => {
     });
   });
   
-  it('should start the server', (done) => {
-    done();
+  it('should validate a username and password & create a new user', (done) => {
+    chai.request(app)
+      .post('/api/newUser')
+      .send({'username': 'testUser0', 'password': 'testUser0'})
+      .end(function(err, res) {
+        should.equal(err, null);
+        res.should.have.status(201);
+        done();
+      });
   });
   
   after((done) => {
+    User.findOneAndRemove({username: 'testUser0'}).exec();
     done();
   });
 });

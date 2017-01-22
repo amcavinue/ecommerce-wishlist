@@ -26,7 +26,7 @@ app.use(passport.initialize());
  * Routes
  */
 routes.lookup();
-app.post('/api/login', routes.apiLogin);
+app.post('/api/newuser', routes.newUser);
 
 /**
  * Run the server

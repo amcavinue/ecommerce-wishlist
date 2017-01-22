@@ -34,7 +34,7 @@ const lookup = () => {
   });
 };
 
-const apiLogin = (req, res) => {
+const newUser = (req, res) => {
   if (!req.body) {
     return res.status(400).json({
       message: "No request body"
@@ -118,4 +118,4 @@ const apiLogin = (req, res) => {
 };
 
 exports.lookup = lookup;
-exports.apiLogin = apiLogin;
+exports.newUser = newUser;
