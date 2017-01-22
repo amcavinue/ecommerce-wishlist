@@ -88,14 +88,14 @@ const newUser = (req, res) => {
   bcrypt.genSalt(10, function(err, salt) {
     if (err) {
       return res.status(500).json({
-        message: 'Internal server error 1'
+        message: 'Internal server error'
       });
     }
 
     bcrypt.hash(password, salt, function(err, hash) {
       if (err) {
         return res.status(500).json({
-          message: 'Internal server error 2'
+          message: 'Incorrect password.'
         });
       }
 
@@ -107,7 +107,7 @@ const newUser = (req, res) => {
       user.save(function(err) {
         if (err) {
           return res.status(500).json({
-            message: 'Internal server error 3'
+            message: 'Error saving user to database.'
           });
         }
 
@@ -117,5 +117,12 @@ const newUser = (req, res) => {
   });
 };
 
+const login = (req, res) => {
+  res.status(200).json({
+    user: req.user
+  })
+};
+
 exports.lookup = lookup;
 exports.newUser = newUser;
+exports.login = login;

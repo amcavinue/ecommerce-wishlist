@@ -19,7 +19,7 @@ app.use(bodyParser.json());
 const routes = require('./server/routes');
 const strategy = require('./server/strategy');
 
-passport.use('basic strategy', strategy);
+passport.use('basic', strategy);
 app.use(passport.initialize());
 
 /**
@@ -27,6 +27,7 @@ app.use(passport.initialize());
  */
 routes.lookup();
 app.post('/api/newuser', routes.newUser);
+app.post('/api/login', passport.authenticate('basic'), routes.login)
 
 /**
  * Run the server

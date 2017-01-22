@@ -18,7 +18,7 @@ describe('Wishlist Server', () => {
     });
   });
   
-  it('should validate a username and password & create a new user', (done) => {
+  it('should create a new user', (done) => {
     chai.request(app)
       .post('/api/newUser')
       .send({'username': 'testUser0', 'password': 'testUser0'})
@@ -27,6 +27,18 @@ describe('Wishlist Server', () => {
         res.should.have.status(201);
         done();
       });
+  });
+  
+  it('validate a username and password', (done) => {
+    chai.request(app)
+      .post('/api/login')
+      .send({'username': 'testUser0', 'password': 'testUser0'})
+      .end(function(err, res) {
+        should.equal(err, null);
+        res.should.have.status(201);
+        done();
+      });
+    done();
   });
   
   after((done) => {

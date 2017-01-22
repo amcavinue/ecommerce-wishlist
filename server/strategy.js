@@ -33,4 +33,4 @@ const strategy = new BasicStrategy(function(username, password, callback) {
   });
 });
 
-exports = strategy;
+module.exports = strategy;
