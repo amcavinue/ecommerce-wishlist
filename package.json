@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node server.js",
     "dev": "export NODE_ENV=development && run-p watch serve",
-    "test": "export NODE_ENV=test && mocha --recursive --compilers js:babel-core/register",
+    "test": "mocha --recursive --compilers js:babel-core/register",
+    "test:dev": "export NODE_ENV=test && mocha --recursive --compilers js:babel-core/register",
     "build": "run-s build:*",
     "clean": "rimraf build",
     "serve": "node debug server.js",
