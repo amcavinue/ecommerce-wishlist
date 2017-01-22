@@ -4,7 +4,8 @@
   "description": "An ecommerce wishlist app",
   "main": "server.js",
   "scripts": {
-    "dev": "run-p watch serve",
+    "start": "node server.js",
+    "dev": "export NODE_ENV=development && run-p watch serve",
     "test": "mocha --recursive --compilers js:babel-core/register",
     "build": "run-s build:*",
     "clean": "rimraf build",

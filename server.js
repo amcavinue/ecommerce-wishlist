@@ -4,7 +4,11 @@ const mongoose = require('mongoose');
 const amazon = require('amazon-product-api');
 var process = require('process');
 
-/*process.env = Object.assign(process.env, require('./amazon-config'));*/
+// If in the development environment, get the aws credentials
+// from the file. Otherwise they are set globally.
+if (process.env.NODE_ENV === 'development') {
+  process.env = Object.assign(process.env, require('./amazon-config'));
+}
 const config = require('./config');
 
 const app = express();
@@ -30,7 +34,6 @@ const client = amazon.createClient({
  * Run the server
  */
 const runServer = function(callback) {
-  console.log(process.env, 33);
     mongoose.connect(config.DATABASE_URL, function(err) {
         if (err && callback) {
             return callback(err);
