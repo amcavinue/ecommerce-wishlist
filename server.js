@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const amazon = require('amazon-product-api');
+const util = require('util');
 var process = require('process');
 
 // If in the development environment, get the aws credentials
@@ -32,11 +33,18 @@ const lookup = () => {
     itemPage: 3,
     responseGroup: 'ItemAttributes,Offers,Images'
   }).then(function(results){
-    debugger;
-    console.log(results, 33);
+    console.log(util.inspect(results, {showHidden: false, depth: null}), 33);
   }).catch(function(err){
-    debugger;
     console.log(err, 35);
+  });
+  
+  client.itemLookup({
+    idType: 'ASIN',
+    itemId: 'B011J9BYC8'
+  }).then(function(results) {
+    console.log(util.inspect(results, {showHidden: false, depth: null}), 47);
+  }).catch(function(err) {
+    console.log(err, 50);
   });
 };
 
