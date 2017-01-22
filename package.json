@@ -64,6 +64,7 @@
   },
   "dependencies": {
     "amazon-product-api": "^0.4.2",
+    "bcryptjs": "^2.4.0",
     "body-parser": "^1.15.2",
     "bootstrap": "^3.3.7",
     "chai-http": "^3.0.0",
@@ -72,6 +73,8 @@
     "isomorphic-fetch": "^2.2.1",
     "jquery": "^2.2.4",
     "mongoose": "^4.7.6",
+    "passport": "^0.3.2",
+    "passport-http": "^0.3.0",
     "react": "^15.3.1",
     "react-addons-test-utils": "^15.4.2",
     "react-addons-update": "^15.4.2",

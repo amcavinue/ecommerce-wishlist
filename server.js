@@ -1,61 +1,27 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const amazon = require('amazon-product-api');
-const util = require('util');
-var process = require('process');
 
 // If in the development environment, get the aws credentials
 // from the file. Otherwise they are set globally.
-if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test') {
+if (process.env.NODE_ENV === 'development' || 
+    process.env.NODE_ENV === 'test') {
   process.env = Object.assign(process.env, require('./amazon-config'));
 }
 const config = require('./config');
 
 const app = express();
-app.use(express.static('build')); // Serve the build folder.
-app.use('/modules', express.static(__dirname + '/node_modules/')); // Serve the node_modules folder.
-app.use(bodyParser.json()); // Used for getting parameters in post requests.
+app.use(express.static('build'));
+app.use('/modules', express.static(__dirname + '/node_modules/'));
+app.use(bodyParser.json());
 
-/**
- * Helper Functions
- */
-// Client for accessing the Amazon Product Advertising API.
-const client = amazon.createClient({
-  awsTag: process.env.AWS_TAG,
-  awsId: process.env.AWS_ID,
-  awsSecret: process.env.AWS_SECRET
-});
-
-const lookup = () => {
-  client.itemSearch({
-    keywords: 'towel',
-    itemPage: 3,
-    responseGroup: 'ItemAttributes,Offers,Images'
-  }).then(function(results){
-    console.log(util.inspect(results, {showHidden: false, depth: null}), 33);
-  }).catch(function(err){
-    console.log(err, 35);
-  });
-  
-  client.itemLookup({
-    idType: 'ASIN',
-    itemId: 'B011J9BYC8'
-  }).then(function(results) {
-    console.log(util.inspect(results, {showHidden: false, depth: null}), 47);
-  }).catch(function(err) {
-    console.log(err, 50);
-  });
-};
-
-lookup();
+const routes = require('./server/routes');
 
 /**
  * Routes
  */
-app.post('/api/login', function(req, res) {
-  return res.status(200);
-});
+routes.lookup();
+app.post('/api/login', routes.apiLogin);
 
 /**
  * Run the server
