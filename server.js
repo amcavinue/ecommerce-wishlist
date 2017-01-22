@@ -7,7 +7,7 @@ var process = require('process');
 
 // If in the development environment, get the aws credentials
 // from the file. Otherwise they are set globally.
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test') {
   process.env = Object.assign(process.env, require('./amazon-config'));
 }
 const config = require('./config');
@@ -53,6 +53,9 @@ lookup();
 /**
  * Routes
  */
+app.post('/api/login', function(req, res) {
+  return res.status(200);
+});
 
 /**
  * Run the server
