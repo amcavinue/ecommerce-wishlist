@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-var passport = require('passport');
+const passport = require('passport');
 
 // If in the development environment, get the aws credentials
 // from the file. Otherwise they are set globally.

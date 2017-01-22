@@ -1,8 +1,8 @@
-var BasicStrategy = require('passport-http').BasicStrategy;
+const BasicStrategy = require('passport-http').BasicStrategy;
 
 const User = require('../models/user');
 
-var strategy = new BasicStrategy(function(username, password, callback) {
+const strategy = new BasicStrategy(function(username, password, callback) {
   User.findOne({
     username: username
   }, function (err, user) {

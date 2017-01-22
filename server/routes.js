@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const amazon = require('amazon-product-api');
 const util = require('util');
-var process = require('process');
-var bcrypt = require('bcryptjs');
+const process = require('process');
+const bcrypt = require('bcryptjs');
 
 const User = require('../models/user');
 
@@ -47,7 +47,7 @@ const newUser = (req, res) => {
     });
   }
 
-  var username = req.body.username;
+  let username = req.body.username;
 
   if (typeof username !== 'string') {
     return res.status(422).json({
@@ -69,7 +69,7 @@ const newUser = (req, res) => {
     });
   }
 
-  var password = req.body.password;
+  let password = req.body.password;
 
   if (typeof password !== 'string') {
     return res.status(422).json({
@@ -99,7 +99,7 @@ const newUser = (req, res) => {
         });
       }
 
-      var user = new User({
+      let user = new User({
         username: username,
         password: hash
       });
