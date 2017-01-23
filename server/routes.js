@@ -1,3 +1,5 @@
+'use strict';
+
 const mongoose = require('mongoose');
 const amazon = require('amazon-product-api');
 const util = require('util');
@@ -119,8 +121,9 @@ const newUser = (req, res) => {
 
 const login = (req, res) => {
   res.status(200).json({
-    user: req.user
-  })
+    user: true
+    // user: req.user
+  });
 };
 
 exports.lookup = lookup;

@@ -1,8 +1,11 @@
+'use strict';
+
 const BasicStrategy = require('passport-http').BasicStrategy;
 
 const User = require('../models/user');
 
 const strategy = new BasicStrategy(function(username, password, callback) {
+  //return callback(null, true);
   User.findOne({
     username: username
   }, function (err, user) {
@@ -21,7 +24,7 @@ const strategy = new BasicStrategy(function(username, password, callback) {
       if (err) {
         return callback(err);
       }
-
+      
       if (!isValid) {
         return callback(null, false, {
           message: 'Incorrect password.'

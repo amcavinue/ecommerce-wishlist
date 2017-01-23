@@ -70,6 +70,7 @@
     "chai-http": "^3.0.0",
     "classnames": "^2.2.5",
     "express": "^4.14.0",
+    "express-session": "^1.14.2",
     "isomorphic-fetch": "^2.2.1",
     "jquery": "^2.2.4",
     "mongoose": "^4.7.6",

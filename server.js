@@ -1,7 +1,9 @@
 const express = require('express');
+// const session = require('express-session');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const passport = require('passport');
+const BasicStrategy = require('passport-http').BasicStrategy;
 
 // If in the development environment, get the aws credentials
 // from the file. Otherwise they are set globally.
@@ -19,15 +21,15 @@ app.use(bodyParser.json());
 const routes = require('./server/routes');
 const strategy = require('./server/strategy');
 
-passport.use('basic', strategy);
+passport.use(strategy);
 app.use(passport.initialize());
 
 /**
  * Routes
  */
-routes.lookup();
+// routes.lookup();
 app.post('/api/newuser', routes.newUser);
-app.post('/api/login', passport.authenticate('basic'), routes.login)
+app.post('/api/login', passport.authenticate('basic', {session: false}), routes.login);
 
 /**
  * Run the server

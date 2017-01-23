@@ -32,13 +32,13 @@ describe('Wishlist Server', () => {
   it('validate a username and password', (done) => {
     chai.request(app)
       .post('/api/login')
-      .send({'username': 'testUser0', 'password': 'testUser0'})
+      .auth('testUser0', 'testUser0')
       .end(function(err, res) {
+        // console.log(err, 37);
         should.equal(err, null);
-        res.should.have.status(201);
+        res.should.have.status(200);
         done();
       });
-    done();
   });
   
   after((done) => {
