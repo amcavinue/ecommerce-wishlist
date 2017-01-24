@@ -3,7 +3,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const passport = require('passport');
-const BasicStrategy = require('passport-http').BasicStrategy;
+const expressJwt = require('express-jwt');
+const authenticate = expressJwt({secret: 'server secret'});
 
 // If in the development environment, get the aws credentials
 // from the file. Otherwise they are set globally.
@@ -29,7 +30,8 @@ app.use(passport.initialize());
  */
 // routes.lookup();
 app.post('/api/newuser', routes.newUser);
-app.post('/api/login', passport.authenticate('basic', {session: false}), routes.login);
+app.post('/api/login', passport.authenticate('local', {session: false}), routes.generateToken, routes.login);
+app.get('/api/restricted', authenticate, routes.restricted);
 
 /**
  * Run the server
@@ -55,7 +57,7 @@ if (require.main === module) {
       console.error(err);
     }
   });
-};
+}
 
 /**
  * Exports

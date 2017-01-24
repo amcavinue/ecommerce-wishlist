@@ -12,6 +12,8 @@ const User = require('../models/user');
 const app = server.app;
 
 describe('Wishlist Server', () => {
+  let webToken;
+  
   before((done) => {
     server.runServer(() => {
       done();
@@ -29,12 +31,24 @@ describe('Wishlist Server', () => {
       });
   });
   
-  it('validate a username and password', (done) => {
+  it('should validate a username and password', (done) => {
     chai.request(app)
       .post('/api/login')
-      .auth('testUser0', 'testUser0')
+      .send({'username': 'testUser0', 'password': 'testUser0'})
       .end(function(err, res) {
-        // console.log(err, 37);
+        webToken = res.body.token;
+        should.equal(err, null);
+        res.should.have.status(200);
+        done();
+      });
+  });
+  
+  it('should validate a restricted endpoint', (done) => {
+    chai.request(app)
+      .get('/api/restricted')
+      .set('Authorization', 'Bearer ' + webToken)
+      .send({'username': 'testUser0', 'password': 'testUser0'})
+      .end(function(err, res) {
         should.equal(err, null);
         res.should.have.status(200);
         done();

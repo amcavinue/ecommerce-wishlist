@@ -5,6 +5,7 @@ const amazon = require('amazon-product-api');
 const util = require('util');
 const process = require('process');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 const User = require('../models/user');
 
@@ -119,13 +120,32 @@ const newUser = (req, res) => {
   });
 };
 
+const generateToken = (req, res, next) => {
+  req.token = jwt.sign(
+    {
+      user: req.username,
+    },
+    'server secret',
+    {
+      expiresIn: '2h'
+    }
+  );
+  next();
+};
+
 const login = (req, res) => {
   res.status(200).json({
-    user: true
-    // user: req.user
+    user: req.user,
+    token: req.token
   });
+};
+
+const restricted = (req, res) => {
+  res.status(200).json(req.user);
 };
 
 exports.lookup = lookup;
 exports.newUser = newUser;
+exports.generateToken = generateToken;
 exports.login = login;
+exports.restricted = restricted;
