@@ -10,9 +10,27 @@ const store = require('../store');
 const actions = require('../actions/index');
 
 const NewUser = React.createClass({
+  getInitialState() {
+    return {
+      username: '',
+      password: ''
+    };
+  },
+  updateUsername(e) {
+    this.setState({
+      username: e.target.value
+    });
+  },
+  updatePassword(e) {
+    this.setState({
+      password: e.target.value
+    });
+  },
   submit(e) {
     e.preventDefault();
-    store.dispatch(actions.fetchNewUser);
+    store.dispatch(
+      actions.fetchNewUser(this.state.username, this.state.password)
+    );
   },
   render() {
     return (
@@ -31,6 +49,7 @@ const NewUser = React.createClass({
                     name="username" 
                     validations={['required']} 
                     value="" 
+                    onChange={this.updateUsername}
                     required 
                   />
                 </div>
@@ -57,6 +76,7 @@ const NewUser = React.createClass({
                     name="passwordConfirm"
                     validations={['required', 'password']} 
                     value="" 
+                    onChange={this.updatePassword}
                     required
                   />
                 </div>

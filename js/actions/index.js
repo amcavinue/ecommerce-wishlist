@@ -13,14 +13,13 @@ const fetchLogin = (username, password) => {
         'password': password
       })
     };
-    debugger;
     
     return fetch('/api/login', init)
     .then(function(response) {
       // If any response other than successful.
       if (response.status < 200 || response.status >= 300) {
-        let error = new Error(response.statusText)
-        error.response = response
+        let error = new Error(response.statusText);
+        error.response = response;
         throw error;
       }
       return response;
@@ -69,14 +68,13 @@ const fetchNewUser = (username, password) => {
         'password': password
       })
     };
-    debugger;
     
     return fetch('/api/users', init)
     .then(function(response) {
       // If any response other than successful.
       if (response.status < 200 || response.status >= 300) {
-        let error = new Error(response.statusText)
-        error.response = response
+        let error = new Error(response.statusText);
+        error.response = response;
         throw error;
       }
       return response;
@@ -86,12 +84,12 @@ const fetchNewUser = (username, password) => {
     })
     .then(function(data) {
       return dispatch(
-        loginSuccess(data)
+        newUserSuccess(data)
       );
     })
     .catch(function(error) {
       return dispatch(
-        loginError(error)
+        newUserError(error)
       );
     });
   };

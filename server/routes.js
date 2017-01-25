@@ -109,8 +109,8 @@ const newUser = (req, res) => {
 
       user.save(function(err) {
         if (err) {
-          return res.status(500).json({
-            message: 'Error saving user to database.'
+          return res.status(409).send({
+            error: 'Error saving user to database.'
           });
         }
 

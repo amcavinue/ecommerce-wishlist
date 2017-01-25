@@ -28,7 +28,6 @@ const Login = React.createClass({
   },
   submit(e) {
     e.preventDefault();
-    debugger;
     store.dispatch(
       actions.fetchLogin(this.state.username, this.state.password)
     );

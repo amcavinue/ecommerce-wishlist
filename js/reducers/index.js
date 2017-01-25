@@ -28,6 +28,14 @@ const initialState = {
 };
 
 const loggedInReducer = (state = initialState.isLoggedIn, action) => {
+  if (action.type === actions.NEW_USER_SUCCESS) {
+      console.log(action.data, 32);
+      return state;
+  } else if (action.type === actions.NEW_USER_ERROR) {
+      console.log('An error occurred: ' + action.err, action.err.response, action);
+      return state;
+  }
+  
   if (action.type === actions.LOGIN_SUCCESS) {
       console.log(action.data, 32);
       return state;
