@@ -28,7 +28,7 @@ app.use(passport.initialize());
  * Routes
  */
 // routes.lookup();
-app.post('/api/newuser', routes.newUser);
+app.post('/api/users', routes.newUser);
 app.post('/api/login', passport.authenticate('local', {session: false}), routes.generateToken, routes.login);
 app.get('/api/restricted', authenticate, routes.restricted);
 
