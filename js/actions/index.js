@@ -1,5 +1,4 @@
 const fetch = require('isomorphic-fetch');
-const store = require('../store');
 
 const fetchLogin = (username, password) => {
   return (dispatch) => {
@@ -28,6 +27,8 @@ const fetchLogin = (username, password) => {
       return response.json();
     })
     .then(function(data) {
+      sessionStorage.setItem('ecommerceAppToken', data.token);
+      
       return dispatch(
         loginSuccess(data)
       );

@@ -8,6 +8,11 @@ const IndexLink = router.IndexLink;
 const store = require('../store');
 
 const EcommerceApp = React.createClass({
+  componentDidMount() {
+    // When the page is reloaded, log the user out and return to the login page.
+    sessionStorage.removeItem('ecommerceAppToken');
+    window.location = "/#/";
+  },
   createMenu() {
     let state = store.getState();
     let currPath = this.props.location.pathname;
