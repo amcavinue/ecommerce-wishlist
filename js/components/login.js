@@ -10,9 +10,28 @@ const store = require('../store');
 const actions = require('../actions/index');
 
 const Login = React.createClass({
+  getInitialState() {
+    return {
+      username: '',
+      password: ''
+    };
+  },
+  updateUsername(e) {
+    this.setState({
+      username: e.target.value
+    });
+  },
+  updatePassword(e) {
+    this.setState({
+      password: e.target.value
+    });
+  },
   submit(e) {
     e.preventDefault();
-    store.dispatch(actions.fetchLogin);
+    debugger;
+    store.dispatch(
+      actions.fetchLogin(this.state.username, this.state.password)
+    );
   },
   render() {
     return (
@@ -20,7 +39,7 @@ const Login = React.createClass({
         <h1 className="text-center">Login to the Ecommerce App</h1>
         <div className="row">
           <div className="col-xs-12 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
-            <Validation.components.Form className="login-component-form">
+            <Validation.components.Form className="login-component-form" onSubmit={this.submit}>
               <fieldset>
                 <div className="form-group">
                   <label className="" htmlFor="username">Username</label>
@@ -29,8 +48,9 @@ const Login = React.createClass({
                     type="text" 
                     id="username" 
                     name="username" 
+                    value=""
                     validations={['required']} 
-                    value="" 
+                    onChange={this.updateUsername}
                     required 
                   />
                 </div>
@@ -42,8 +62,9 @@ const Login = React.createClass({
                     type="password" 
                     id="password" 
                     name="password" 
+                    value=""
                     validations={['required']} 
-                    value="" 
+                    onChange={this.updatePassword}
                     required 
                   />
                 </div>
@@ -53,8 +74,7 @@ const Login = React.createClass({
               id="login-submit" 
               type="submit" 
               name="submit" 
-              className="btn btn-primary col-xs-12"
-              onClick={this.submit}>
+              className="btn btn-primary col-xs-12">
                 Submit
               </Validation.components.Button>
             </Validation.components.Form>

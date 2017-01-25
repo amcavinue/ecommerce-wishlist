@@ -1,7 +1,44 @@
 const fetch = require('isomorphic-fetch');
 const store = require('../store');
 
-const fetchLogin = () => {
+const fetchLogin = (username, password) => {
+  return (dispatch) => {
+    let init = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        'username': username,
+        'password': password
+      })
+    };
+    debugger;
+    
+    return fetch('/api/login', init)
+    .then(function(response) {
+      // If any response other than successful.
+      if (response.status < 200 || response.status >= 300) {
+        let error = new Error(response.statusText)
+        error.response = response
+        throw error;
+      }
+      return response;
+    })
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(data) {
+      return dispatch(
+        loginSuccess(data)
+      );
+    })
+    .catch(function(error) {
+      return dispatch(
+        loginError(error)
+      );
+    });
+  };
 };
 
 const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
