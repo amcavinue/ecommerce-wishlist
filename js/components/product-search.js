@@ -19,6 +19,17 @@ const ProductSearch = React.createClass({
     return (
       <div className="product-search-component">
         <h1 className="text-center">Search for Some of Your Favorite Products!</h1>
+        
+        <form action="" method="">
+          <fieldset>
+            <div>
+              <label htmlFor="name">Search:</label>
+              <input type="text" id="search" name="search" required/>
+            </div>
+          </fieldset>
+      
+          <input type="submit" value="Submit" name="submit" />
+      </form>
       </div>
     );
   }

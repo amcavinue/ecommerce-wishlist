@@ -35,6 +35,7 @@ const loggedInReducer = (state = initialState.isLoggedIn, action) => {
     window.location = "/#/";
     bootbox.alert('Congratulations! You\'re username has been added. Please log in.');
     return state;
+    
   } else if (action.type === actions.NEW_USER_ERROR) {
     waitingDialog.hide();
     if (action.err.response.status === 409) {
@@ -43,9 +44,12 @@ const loggedInReducer = (state = initialState.isLoggedIn, action) => {
       bootbox.alert('There was a server error. Please try again later.');
     }
     return state;
+    
   } else if (action.type === actions.LOGIN_SUCCESS) {
     waitingDialog.hide();
+    window.location = "/#/search";
     return update(state, {$set: true});
+    
   } else if (action.type === actions.LOGIN_ERROR) {
     waitingDialog.hide();
     if (action.err.response.status === 401) {
@@ -54,11 +58,13 @@ const loggedInReducer = (state = initialState.isLoggedIn, action) => {
       bootbox.alert('There was a server error. Please try again later.');
     }
     return state;
+    
   } else if (action.type === actions.LOGOUT) {
     sessionStorage.removeItem('ecommerceAppToken');
     window.location = "/#/";
     waitingDialog.hide();
     return update(state, {$set: false});
+    
   }
   return state;
 }
