@@ -32,14 +32,17 @@ const loggedInReducer = (state = initialState.isLoggedIn, action) => {
     console.log('An error occurred: ' + action.err, action.err.response, action);
     return state;
   } else if (action.type === actions.LOGIN_SUCCESS) {
+    waitingDialog.hide();
     console.log(action.data, 32);
     return update(state, {$set: true});
   } else if (action.type === actions.LOGIN_ERROR) {
+    waitingDialog.hide();
     console.log('An error occurred: ' + action.err);
     return state;
   } else if (action.type === actions.LOGOUT) {
     sessionStorage.removeItem('ecommerceAppToken');
     window.location = "/#/";
+    waitingDialog.hide();
     return update(state, {$set: false});
   }
   return state;
