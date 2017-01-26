@@ -5,6 +5,7 @@ const combineReducers = require('redux').combineReducers;
 
 const initialState = {
     isLoggedIn: false,
+    wishlist: null,
     loggedOutPages: [
       {
         text: 'Login',
@@ -66,10 +67,16 @@ const loggedInPagesReducer = (state = initialState.loggedInPages, action) => {
   return state;
 }
 
+const wishlistReducer = (state = initialState.wishlist, action) => {
+  
+  return state;
+}
+
 const reducer = combineReducers({
     isLoggedIn: loggedInReducer,
     loggedOutPages: loggedOutPagesReducer,
-    loggedInPages: loggedInPagesReducer
+    loggedInPages: loggedInPagesReducer,
+    wishlist: wishlistReducer
 });
 
 exports.reducer = reducer;
