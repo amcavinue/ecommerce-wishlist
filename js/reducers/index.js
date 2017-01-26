@@ -26,18 +26,28 @@ const initialState = {
 
 const loggedInReducer = (state = initialState.isLoggedIn, action) => {
   if (action.type === actions.NEW_USER_SUCCESS) {
-    console.log(action.data, 32);
+    waitingDialog.hide();
+    window.location = "/#/";
+    bootbox.alert('Congratulations! You\'re username has been added. Please log in.');
     return state;
   } else if (action.type === actions.NEW_USER_ERROR) {
-    console.log('An error occurred: ' + action.err, action.err.response, action);
+    waitingDialog.hide();
+    if (action.err.response.status === 409) {
+      bootbox.alert('That username is already taken. Please choose another.');
+    } else {
+      bootbox.alert('There was a server error. Please try again later.');
+    }
     return state;
   } else if (action.type === actions.LOGIN_SUCCESS) {
     waitingDialog.hide();
-    console.log(action.data, 32);
     return update(state, {$set: true});
   } else if (action.type === actions.LOGIN_ERROR) {
     waitingDialog.hide();
-    console.log('An error occurred: ' + action.err);
+    if (action.err.response.status === 401) {
+      bootbox.alert('Incorrect username or password.');
+    } else {
+      bootbox.alert('There was a server error. Please try again later.');
+    }
     return state;
   } else if (action.type === actions.LOGOUT) {
     sessionStorage.removeItem('ecommerceAppToken');

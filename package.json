@@ -66,6 +66,7 @@
     "amazon-product-api": "^0.4.2",
     "bcryptjs": "^2.4.0",
     "body-parser": "^1.15.2",
+    "bootbox": "^4.4.0",
     "bootstrap": "^3.3.7",
     "chai-http": "^3.0.0",
     "classnames": "^2.2.5",

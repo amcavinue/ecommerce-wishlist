@@ -28,6 +28,7 @@ const NewUser = React.createClass({
   },
   submit(e) {
     e.preventDefault();
+    waitingDialog.show();
     store.dispatch(
       actions.fetchNewUser(this.state.username, this.state.password)
     );
