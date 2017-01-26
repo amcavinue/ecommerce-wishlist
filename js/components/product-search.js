@@ -18,7 +18,7 @@ const ProductSearch = React.createClass({
   render() {
     return (
       <div className="product-search-component">
-        
+        <h1 className="text-center">Search for Some of Your Favorite Products!</h1>
       </div>
     );
   }

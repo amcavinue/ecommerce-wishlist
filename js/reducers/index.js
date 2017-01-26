@@ -18,6 +18,10 @@ const initialState = {
     ], // The ordering of these pages affects the order of the menu.
     loggedInPages: [
       {
+        text: 'Product Search',
+        path: '/search'
+      },
+      {
         text: 'Logout',
         path: null,
         id: 'logout'
