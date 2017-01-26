@@ -15,20 +15,20 @@ const ProductSearch = React.createClass({
       data1: null
     };
   },
+  submit(e) {
+    e.preventDefault();
+  },
   render() {
     return (
       <div className="product-search-component">
         <h1 className="text-center">Search for Some of Your Favorite Products!</h1>
         
-        <form action="" method="">
-          <fieldset>
-            <div>
-              <label htmlFor="name">Search:</label>
-              <input type="text" id="search" name="search" required/>
-            </div>
-          </fieldset>
-      
-          <input type="submit" value="Submit" name="submit" />
+        <form className="form-inline search-form" onSubmit={this.submit}>
+          <div className="form-group">
+            <label htmlFor="name">Search:</label>
+            <input className="form-control" type="text" id="search" name="search" required/>
+          </div>
+          <input className="btn btn-primary" type="submit" value="Submit" name="submit" />
       </form>
       </div>
     );
