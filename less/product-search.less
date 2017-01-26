@@ -48,6 +48,8 @@
         
         .thumbnail {
           margin-bottom: 0px;
+          background-color: transparent;
+          border: none;
         }
         
         .caption {
@@ -88,5 +90,12 @@
     .search-form {
       text-align: left;
     }
+  }
+}
+
+@media (max-width: 700px) {
+  .product-search-component .list-grid-view #products .list-group-item .list-group-image {
+    float: none;
+    margin-right: auto;
   }
 }

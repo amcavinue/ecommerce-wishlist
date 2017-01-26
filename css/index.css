@@ -62,6 +62,8 @@
 }
 .product-search-component .list-grid-view #products .list-group-item .thumbnail {
   margin-bottom: 0px;
+  background-color: transparent;
+  border: none;
 }
 .product-search-component .list-grid-view #products .list-group-item .caption {
   padding: 9px 9px 0px 9px;
@@ -90,6 +92,12 @@
 @media (max-width: 768px) {
   .product-search-component .search-form {
     text-align: left;
+  }
+}
+@media (max-width: 700px) {
+  .product-search-component .list-grid-view #products .list-group-item .list-group-image {
+    float: none;
+    margin-right: auto;
   }
 }
 /*# sourceMappingURL=index.css.map */

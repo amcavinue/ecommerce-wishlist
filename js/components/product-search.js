@@ -61,15 +61,11 @@ const ProductSearch = React.createClass({
                                 Product title</h4>
                             <p className="group inner list-group-item-text">
                                 Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                                sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-                            <div className="row">
-                                <div className="col-xs-12 col-md-6">
-                                    <p className="lead">
-                                        $21.000</p>
-                                </div>
-                                <div className="col-xs-12 col-md-6">
-                                    <a className="btn btn-success" href="">Add to cart</a>
-                                </div>
+                                sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+                              </p>
+                            <div className="price">$21.000</div>
+                            <div className="">
+                                <a className="btn btn-success" href="">Add to wishlist</a>
                             </div>
                         </div>
                     </div>
@@ -82,15 +78,11 @@ const ProductSearch = React.createClass({
                                 Product title</h4>
                             <p className="group inner list-group-item-text">
                                 Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                                sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-                            <div className="row">
-                                <div className="col-xs-12 col-md-6">
-                                    <p className="lead">
-                                        $21.000</p>
-                                </div>
-                                <div className="col-xs-12 col-md-6">
-                                    <a className="btn btn-success" href="">Add to cart</a>
-                                </div>
+                                sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+                              </p>
+                            <div className="price">$21.000</div>
+                            <div className="">
+                                <a className="btn btn-success" href="">Add to wishlist</a>
                             </div>
                         </div>
                     </div>
@@ -103,15 +95,11 @@ const ProductSearch = React.createClass({
                                 Product title</h4>
                             <p className="group inner list-group-item-text">
                                 Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                                sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-                            <div className="row">
-                                <div className="col-xs-12 col-md-6">
-                                    <p className="lead">
-                                        $21.000</p>
-                                </div>
-                                <div className="col-xs-12 col-md-6">
-                                    <a className="btn btn-success" href="">Add to cart</a>
-                                </div>
+                                sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+                              </p>
+                            <div className="price">$21.000</div>
+                            <div className="">
+                                <a className="btn btn-success" href="">Add to wishlist</a>
                             </div>
                         </div>
                     </div>
@@ -124,15 +112,11 @@ const ProductSearch = React.createClass({
                                 Product title</h4>
                             <p className="group inner list-group-item-text">
                                 Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                                sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-                            <div className="row">
-                                <div className="col-xs-12 col-md-6">
-                                    <p className="lead">
-                                        $21.000</p>
-                                </div>
-                                <div className="col-xs-12 col-md-6">
-                                    <a className="btn btn-success" href="">Add to cart</a>
-                                </div>
+                                sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+                              </p>
+                            <div className="price">$21.000</div>
+                            <div className="">
+                                <a className="btn btn-success" href="">Add to wishlist</a>
                             </div>
                         </div>
                     </div>
@@ -145,15 +129,11 @@ const ProductSearch = React.createClass({
                                 Product title</h4>
                             <p className="group inner list-group-item-text">
                                 Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                                sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-                            <div className="row">
-                                <div className="col-xs-12 col-md-6">
-                                    <p className="lead">
-                                        $21.000</p>
-                                </div>
-                                <div className="col-xs-12 col-md-6">
-                                    <a className="btn btn-success" href="">Add to cart</a>
-                                </div>
+                                sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+                              </p>
+                            <div className="price">$21.000</div>
+                            <div className="">
+                                <a className="btn btn-success" href="">Add to wishlist</a>
                             </div>
                         </div>
                     </div>
@@ -166,15 +146,28 @@ const ProductSearch = React.createClass({
                                 Product title</h4>
                             <p className="group inner list-group-item-text">
                                 Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                                sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-                            <div className="row">
-                                <div className="col-xs-12 col-md-6">
-                                    <p className="lead">
-                                        $21.000</p>
-                                </div>
-                                <div className="col-xs-12 col-md-6">
-                                    <a className="btn btn-success" href="">Add to cart</a>
-                                </div>
+                                sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+                              </p>
+                            <div className="price">$21.000</div>
+                            <div className="">
+                                <a className="btn btn-success" href="">Add to wishlist</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="item col-xs-12 col-md-6 col-lg-4">
+                    <div className="thumbnail">
+                        <img className="group list-group-image" src="http://placehold.it/400x250/000/fff" alt="" />
+                        <div className="caption">
+                            <h4 className="group inner list-group-item-heading">
+                                Product title</h4>
+                            <p className="group inner list-group-item-text">
+                                Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+                                sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+                              </p>
+                            <div className="price">$21.000</div>
+                            <div className="">
+                                <a className="btn btn-success" href="">Add to wishlist</a>
                             </div>
                         </div>
                     </div>
