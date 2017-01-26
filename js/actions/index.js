@@ -112,6 +112,13 @@ function newUserError(err) {
     };
 }
 
+const LOGOUT = 'LOGOUT';
+function logout() {
+  return {
+    type: LOGOUT
+  };
+}
+
 exports.fetchLogin = fetchLogin;
 exports.LOGIN_ERROR = LOGIN_ERROR;
 exports.loginError = loginError;
@@ -123,3 +130,6 @@ exports.NEW_USER_ERROR= NEW_USER_ERROR;
 exports.newUserError = newUserError;
 exports.NEW_USER_SUCCESS = NEW_USER_SUCCESS;
 exports.newUserSuccess = newUserSuccess;
+
+exports.LOGOUT = LOGOUT;
+exports.logout = logout;

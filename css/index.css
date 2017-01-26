@@ -10,6 +10,9 @@
   font-weight: 700;
   letter-spacing: 0.04em;
 }
+.navbar-default .navbar-nav > li > a {
+  cursor: pointer;
+}
 .login-component {
   text-align: center;
 }

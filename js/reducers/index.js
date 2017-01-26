@@ -17,31 +17,30 @@ const initialState = {
     ], // The ordering of these pages affects the order of the menu.
     loggedInPages: [
       {
-        text: 'Login',
-        path: '/login'
-      },
-      {
-        text: 'Sign Up',
-        path: '/newuser'
+        text: 'Logout',
+        path: null,
+        id: 'logout'
       }
     ] // The ordering of these pages affects the order of the menu.
 };
 
 const loggedInReducer = (state = initialState.isLoggedIn, action) => {
   if (action.type === actions.NEW_USER_SUCCESS) {
-      console.log(action.data, 32);
-      return state;
+    console.log(action.data, 32);
+    return state;
   } else if (action.type === actions.NEW_USER_ERROR) {
-      console.log('An error occurred: ' + action.err, action.err.response, action);
-      return state;
-  }
-  
-  if (action.type === actions.LOGIN_SUCCESS) {
-      console.log(action.data, 32);
-      return state;
+    console.log('An error occurred: ' + action.err, action.err.response, action);
+    return state;
+  } else if (action.type === actions.LOGIN_SUCCESS) {
+    console.log(action.data, 32);
+    return update(state, {$set: true});
   } else if (action.type === actions.LOGIN_ERROR) {
-      console.log('An error occurred: ' + action.err);
-      return state;
+    console.log('An error occurred: ' + action.err);
+    return state;
+  } else if (action.type === actions.LOGOUT) {
+    sessionStorage.removeItem('ecommerceAppToken');
+    window.location = "/#/";
+    return update(state, {$set: false});
   }
   return state;
 }
