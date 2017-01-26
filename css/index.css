@@ -24,12 +24,68 @@
 }
 .product-search-component .search-form {
   text-align: center;
+  margin-bottom: 1em;
 }
 .product-search-component .search-form .form-group {
   margin-right: 1em;
 }
 .product-search-component .search-form .form-group label {
   margin-right: 1em;
+}
+.product-search-component .list-grid-view {
+  padding: 0;
+}
+.product-search-component .list-grid-view .glyphicon {
+  margin-right: 5px;
+}
+.product-search-component .list-grid-view #products {
+  padding: 0 1em;
+}
+.product-search-component .list-grid-view #products .item .thumbnail {
+  margin-bottom: 20px;
+  padding: 0px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+}
+.product-search-component .list-grid-view #products .item .thumbnail img {
+  max-height: 250px;
+}
+.product-search-component .list-grid-view #products .list-group-item {
+  float: none;
+  width: 100%;
+  background-color: #fff;
+  margin-bottom: 10px;
+}
+.product-search-component .list-grid-view #products .list-group-item .list-group-image {
+  margin-right: 10px;
+}
+.product-search-component .list-grid-view #products .list-group-item .thumbnail {
+  margin-bottom: 0px;
+}
+.product-search-component .list-grid-view #products .list-group-item .caption {
+  padding: 9px 9px 0px 9px;
+}
+.product-search-component .list-grid-view #products .list-group-item img {
+  float: left;
+}
+.product-search-component .list-grid-view #products .list-group-item .list-group-item-text {
+  margin: 0 0 11px;
+}
+.product-search-component .list-grid-view #products .list-group-item:nth-of-type(odd) {
+  background: #eeeeee;
+}
+.product-search-component .list-grid-view #products .list-group-item:nth-of-type(odd):hover,
+.product-search-component .list-grid-view #products .list-group-item:hover {
+  background: #428bca;
+}
+.product-search-component .list-grid-view #products .list-group-item:before,
+.product-search-component .list-grid-view #products .list-group-item:after {
+  display: table;
+  content: " ";
+}
+.product-search-component .list-grid-view #products .list-group-item:after {
+  clear: both;
 }
 @media (max-width: 768px) {
   .product-search-component .search-form {

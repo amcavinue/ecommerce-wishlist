@@ -1,12 +1,83 @@
 .product-search-component {
   .search-form {
     text-align: center;
+    margin-bottom: 1em;
     
     .form-group {
       margin-right: 1em;
       
       label {
         margin-right: 1em;
+      }
+    }
+  }
+  
+  .list-grid-view {
+    padding: 0;
+    
+    .glyphicon { 
+      margin-right:5px; 
+    }
+    
+    #products {
+      padding: 0 1em;
+      
+      .item {
+        .thumbnail {
+          margin-bottom: 20px;
+          padding: 0px;
+          -webkit-border-radius: 0px;
+          -moz-border-radius: 0px;
+          border-radius: 0px;
+          
+          img {
+            max-height: 250px;
+          }
+        }
+      }
+      
+      .list-group-item {
+        float: none;
+        width: 100%;
+        background-color: #fff;
+        margin-bottom: 10px;
+        
+        .list-group-image {
+          margin-right: 10px;
+        }
+        
+        .thumbnail {
+          margin-bottom: 0px;
+        }
+        
+        .caption {
+          padding: 9px 9px 0px 9px;
+        }
+        
+        img {
+          float: left;
+        }
+        
+        .list-group-item-text {
+          margin: 0 0 11px;
+        }
+        
+        &:nth-of-type(odd) {
+          background: #eeeeee;
+        }
+        
+        &:nth-of-type(odd):hover, &:hover {
+          background: #428bca;
+        }
+        
+        &:before, &:after {
+          display: table;
+          content: " ";
+        }
+        
+        &:after {
+          clear: both;
+        }
       }
     }
   }
