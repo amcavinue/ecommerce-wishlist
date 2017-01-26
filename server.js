@@ -1,5 +1,4 @@
 const express = require('express');
-// const session = require('express-session');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const passport = require('passport');
@@ -17,6 +16,7 @@ const config = require('./config');
 const app = express();
 app.use(express.static('build'));
 app.use('/modules', express.static(__dirname + '/node_modules/'));
+app.use('/assets', express.static(__dirname + '/assets/'));
 app.use(bodyParser.json());
 
 const routes = require('./server/routes');
@@ -29,7 +29,7 @@ app.use(passport.initialize());
  * Routes
  */
 // routes.lookup();
-app.post('/api/newuser', routes.newUser);
+app.post('/api/users', routes.newUser);
 app.post('/api/login', passport.authenticate('local', {session: false}), routes.generateToken, routes.login);
 app.get('/api/restricted', authenticate, routes.restricted);
 

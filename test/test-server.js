@@ -22,7 +22,7 @@ describe('Wishlist Server', () => {
   
   it('should create a new user', (done) => {
     chai.request(app)
-      .post('/api/newUser')
+      .post('/api/users')
       .send({'username': 'testUser0', 'password': 'testUser0'})
       .end(function(err, res) {
         should.equal(err, null);

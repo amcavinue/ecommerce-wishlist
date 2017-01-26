@@ -1,7 +1,44 @@
 const fetch = require('isomorphic-fetch');
-const store = require('../store');
 
-const fetchLogin = () => {
+const fetchLogin = (username, password) => {
+  return (dispatch) => {
+    let init = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        'username': username,
+        'password': password
+      })
+    };
+    
+    return fetch('/api/login', init)
+    .then(function(response) {
+      // If any response other than successful.
+      if (response.status < 200 || response.status >= 300) {
+        let error = new Error(response.statusText);
+        error.response = response;
+        throw error;
+      }
+      return response;
+    })
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(data) {
+      sessionStorage.setItem('ecommerceAppToken', data.token);
+      
+      return dispatch(
+        loginSuccess(data)
+      );
+    })
+    .catch(function(error) {
+      return dispatch(
+        loginError(error)
+      );
+    });
+  };
 };
 
 const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
@@ -20,7 +57,43 @@ function loginError(err) {
     };
 }
 
-const fetchNewUser = () => {
+const fetchNewUser = (username, password) => {
+  return (dispatch) => {
+    let init = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        'username': username,
+        'password': password
+      })
+    };
+    
+    return fetch('/api/users', init)
+    .then(function(response) {
+      // If any response other than successful.
+      if (response.status < 200 || response.status >= 300) {
+        let error = new Error(response.statusText);
+        error.response = response;
+        throw error;
+      }
+      return response;
+    })
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(data) {
+      return dispatch(
+        newUserSuccess(data)
+      );
+    })
+    .catch(function(error) {
+      return dispatch(
+        newUserError(error)
+      );
+    });
+  };
 };
 
 const NEW_USER_SUCCESS = 'NEW_USER_SUCCESS';
@@ -39,6 +112,13 @@ function newUserError(err) {
     };
 }
 
+const LOGOUT = 'LOGOUT';
+function logout() {
+  return {
+    type: LOGOUT
+  };
+}
+
 exports.fetchLogin = fetchLogin;
 exports.LOGIN_ERROR = LOGIN_ERROR;
 exports.loginError = loginError;
@@ -50,3 +130,6 @@ exports.NEW_USER_ERROR= NEW_USER_ERROR;
 exports.newUserError = newUserError;
 exports.NEW_USER_SUCCESS = NEW_USER_SUCCESS;
 exports.newUserSuccess = newUserSuccess;
+
+exports.LOGOUT = LOGOUT;
+exports.logout = logout;
