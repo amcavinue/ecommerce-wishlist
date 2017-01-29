@@ -9,34 +9,6 @@ const jwt = require('jsonwebtoken');
 
 const User = require('../models/user');
 
-// Client for accessing the Amazon Product Advertising API.
-const client = amazon.createClient({
-  awsTag: process.env.AWS_TAG,
-  awsId: process.env.AWS_ID,
-  awsSecret: process.env.AWS_SECRET
-});
-
-const lookup = () => {
-  client.itemSearch({
-    keywords: 'towel',
-    itemPage: 3,
-    responseGroup: 'ItemAttributes,Offers,Images'
-  }).then(function(results){
-    // console.log(util.inspect(results, {showHidden: false, depth: null}), 33);
-  }).catch(function(err){
-    console.log(err, 35);
-  });
-  
-  client.itemLookup({
-    idType: 'ASIN',
-    itemId: 'B011J9BYC8'
-  }).then(function(results) {
-    // console.log(util.inspect(results, {showHidden: false, depth: null}), 47);
-  }).catch(function(err) {
-    console.log(err, 50);
-  });
-};
-
 const newUser = (req, res) => {
   if (!req.body) {
     return res.status(400).json({
@@ -144,8 +116,43 @@ const restricted = (req, res) => {
   res.status(200).json(req.user);
 };
 
-exports.lookup = lookup;
+// Client for accessing the Amazon Product Advertising API.
+const client = amazon.createClient({
+  awsTag: process.env.AWS_TAG,
+  awsId: process.env.AWS_ID,
+  awsSecret: process.env.AWS_SECRET
+});
+
+const products = (req, res) => {
+  client.itemSearch({
+    keywords: req.params.query,
+    itemPage: 3,
+    responseGroup: 'ItemAttributes,Offers,Images'
+  }).then(function(results){
+    // console.log(util.inspect(results, {showHidden: false, depth: null}), 33);
+    return res.status(200).json(results);
+  }).catch(function(err){
+    // console.log(err, 35);
+    return res.status(400).json(err);
+  });
+};
+
+const asins = (req, res) => {
+  client.itemLookup({
+    idType: 'ASIN',
+    itemId: req.params.asin
+  }).then(function(results) {
+    // console.log(util.inspect(results, {showHidden: false, depth: null}), 47);
+    return res.status(200).json(results);
+  }).catch(function(err) {
+    // console.log(err, 50);
+    return res.status(400).json(err);
+  });
+};
+
 exports.newUser = newUser;
 exports.generateToken = generateToken;
 exports.login = login;
 exports.restricted = restricted;
+exports.products = products;
+exports.asins = asins;
