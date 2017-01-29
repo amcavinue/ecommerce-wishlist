@@ -65,6 +65,21 @@ const loggedInReducer = (state = initialState.isLoggedIn, action) => {
     waitingDialog.hide();
     return update(state, {$set: false});
     
+  } else if (action.type === actions.PRODUCTS_SUCCESS) {
+    waitingDialog.hide();
+    return state;
+    
+  } else if (action.type === actions.PRODUCTS_ERROR) {
+    waitingDialog.hide();
+    bootbox.alert('There was an error connecting to Amazon. Please try again later.');
+    return state;
+    
+  } else if (action.type === actions.PRODUCT_SUCCESS) {
+    return state;
+    
+  } else if (action.type === actions.PRODUCT_ERROR) {
+    return state;
+    
   }
   return state;
 }

@@ -36,10 +36,10 @@ const ProductSearch = React.createClass({
   },
   submit(e) {
     e.preventDefault();
+    waitingDialog.show();
     store.dispatch(
       actions.fetchProducts(this.state.query)
     );
-    this.searchBox.value = '';
   },
   render() {
     return (
