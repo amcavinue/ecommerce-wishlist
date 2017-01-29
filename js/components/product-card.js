@@ -25,20 +25,18 @@ const ProductCard = React.createClass({
   render() {
     return (
       <div className="product-card-component">
-        <div className="item col-xs-12 col-md-6 col-lg-4">
-            <div className="thumbnail">
-                <img className="group list-group-image" src={this.props.img} alt="" />
-                <div className="caption">
-                    <h4 className="group inner list-group-item-heading">{this.props.title}</h4>
-                    <p className="group inner list-group-item-text">
-                        {this.props.description}
-                    </p>
-                    <div className="price">{this.formatDollar(this.props.price)}</div>
-                    <div className="">
-                      <a className="btn btn-success" href="">Add to wishlist</a>
-                    </div>
-                </div>
+        <div className={this.props.itemClass + ' item col-xs-12 col-md-6 col-lg-4'}>
+          <div className="thumbnail">
+            <img className="group list-group-image" src={this.props.img} alt="" />
+            <div className="caption">
+              <h4 className="group inner list-group-item-heading">{this.props.title}</h4>
+              <p className="group inner list-group-item-text">
+                {this.props.description}
+              </p>
+              <div className="price">{this.formatDollar(this.props.price)}</div>
+              <a className="btn btn-success" href="">Add to wishlist</a>
             </div>
+          </div>
         </div>
       </div>
     );

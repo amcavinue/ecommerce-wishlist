@@ -13,19 +13,19 @@ const ProductCard = require('./product-card');
 const ProductSearch = React.createClass({
   getInitialState() {
     return {
-      data1: null
+      itemClass: 'grid-group-item'
     };
   },
-  componentDidMount() {
-    $('#list').click((e) => {
-      e.preventDefault();
-      $('#products .item').addClass('list-group-item');
+  gridToggle(e) {
+    e.preventDefault();
+    this.setState({
+      itemClass: 'grid-group-item'
     });
-    
-    $('#grid').click((e) => {
-      e.preventDefault();
-      $('#products .item').removeClass('list-group-item');
-      $('#products .item').addClass('grid-group-item');
+  },
+  listToggle(e) {
+    e.preventDefault();
+    this.setState({
+      itemClass: 'list-group-item'
     });
   },
   submit(e) {
@@ -48,19 +48,24 @@ const ProductSearch = React.createClass({
             <div className="well well-sm">
                 <strong>Display </strong>
                 <div className="btn-group">
-                    <a href="" id="list" className="btn btn-default btn-sm"><span className="glyphicon glyphicon-th-list">
-                    </span>List</a> <a href="" id="grid" className="btn btn-default btn-sm"><span
-                        className="glyphicon glyphicon-th"></span>Grid</a>
+                    <a href="" id="list" className="btn btn-default btn-sm" onClick={this.listToggle}>
+                      <span className="glyphicon glyphicon-th-list"></span>
+                      List
+                    </a> 
+                    <a href="" id="grid" className="btn btn-default btn-sm" onClick={this.gridToggle}>
+                      <span className="glyphicon glyphicon-th"></span>
+                      Grid
+                    </a>
                 </div>
             </div>
             <div id="products" className="row list-group">
-              <ProductCard title={'Product title'} img={'http://placehold.it/400x250/000/fff'} price={25} description={'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.'} />
-              <ProductCard title={'Product title'} img={'http://placehold.it/400x250/000/fff'} price={25} description={'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.'} />
-              <ProductCard title={'Product title'} img={'http://placehold.it/400x250/000/fff'} price={25} description={'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.'} />
-              <ProductCard title={'Product title'} img={'http://placehold.it/400x250/000/fff'} price={25} description={'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.'} />
-              <ProductCard title={'Product title'} img={'http://placehold.it/400x250/000/fff'} price={25} description={'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.'} />
-              <ProductCard title={'Product title'} img={'http://placehold.it/400x250/000/fff'} price={25} description={'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.'} />
-              <ProductCard title={'Product title'} img={'http://placehold.it/400x250/000/fff'} price={25} description={'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.'} />
+              <ProductCard itemClass={this.state.itemClass} title={'Product title'} img={'http://placehold.it/400x250/000/fff'} price={25} description={'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.'} />
+              <ProductCard itemClass={this.state.itemClass} title={'Product title'} img={'http://placehold.it/400x250/000/fff'} price={25} description={'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.'} />
+              <ProductCard itemClass={this.state.itemClass} title={'Product title'} img={'http://placehold.it/400x250/000/fff'} price={25} description={'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.'} />
+              <ProductCard itemClass={this.state.itemClass} title={'Product title'} img={'http://placehold.it/400x250/000/fff'} price={25} description={'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.'} />
+              <ProductCard itemClass={this.state.itemClass} title={'Product title'} img={'http://placehold.it/400x250/000/fff'} price={25} description={'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.'} />
+              <ProductCard itemClass={this.state.itemClass} title={'Product title'} img={'http://placehold.it/400x250/000/fff'} price={25} description={'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.'} />
+              <ProductCard itemClass={this.state.itemClass} title={'Product title'} img={'http://placehold.it/400x250/000/fff'} price={25} description={'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.'} />
             </div>
         </div>
       </div>
