@@ -8,6 +8,7 @@ const IndexLink = router.IndexLink;
 
 const store = require('../store');
 const actions = require('../actions/index');
+const ProductCard = require('./product-card');
 
 const ProductSearch = React.createClass({
   getInitialState() {
@@ -53,125 +54,13 @@ const ProductSearch = React.createClass({
                 </div>
             </div>
             <div id="products" className="row list-group">
-                <div className="item col-xs-12 col-md-6 col-lg-4">
-                    <div className="thumbnail">
-                        <img className="group list-group-image" src="http://placehold.it/400x250/000/fff" alt="" />
-                        <div className="caption">
-                            <h4 className="group inner list-group-item-heading">
-                                Product title</h4>
-                            <p className="group inner list-group-item-text">
-                                Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                                sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-                              </p>
-                            <div className="price">$21.000</div>
-                            <div className="">
-                                <a className="btn btn-success" href="">Add to wishlist</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="item col-xs-12 col-md-6 col-lg-4">
-                    <div className="thumbnail">
-                        <img className="group list-group-image" src="http://placehold.it/400x250/000/fff" alt="" />
-                        <div className="caption">
-                            <h4 className="group inner list-group-item-heading">
-                                Product title</h4>
-                            <p className="group inner list-group-item-text">
-                                Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                                sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-                              </p>
-                            <div className="price">$21.000</div>
-                            <div className="">
-                                <a className="btn btn-success" href="">Add to wishlist</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="item col-xs-12 col-md-6 col-lg-4">
-                    <div className="thumbnail">
-                        <img className="group list-group-image" src="http://placehold.it/400x250/000/fff" alt="" />
-                        <div className="caption">
-                            <h4 className="group inner list-group-item-heading">
-                                Product title</h4>
-                            <p className="group inner list-group-item-text">
-                                Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                                sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-                              </p>
-                            <div className="price">$21.000</div>
-                            <div className="">
-                                <a className="btn btn-success" href="">Add to wishlist</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="item col-xs-12 col-md-6 col-lg-4">
-                    <div className="thumbnail">
-                        <img className="group list-group-image" src="http://placehold.it/400x250/000/fff" alt="" />
-                        <div className="caption">
-                            <h4 className="group inner list-group-item-heading">
-                                Product title</h4>
-                            <p className="group inner list-group-item-text">
-                                Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                                sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-                              </p>
-                            <div className="price">$21.000</div>
-                            <div className="">
-                                <a className="btn btn-success" href="">Add to wishlist</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="item col-xs-12 col-md-6 col-lg-4">
-                    <div className="thumbnail">
-                        <img className="group list-group-image" src="http://placehold.it/400x250/000/fff" alt="" />
-                        <div className="caption">
-                            <h4 className="group inner list-group-item-heading">
-                                Product title</h4>
-                            <p className="group inner list-group-item-text">
-                                Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                                sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-                              </p>
-                            <div className="price">$21.000</div>
-                            <div className="">
-                                <a className="btn btn-success" href="">Add to wishlist</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="item col-xs-12 col-md-6 col-lg-4">
-                    <div className="thumbnail">
-                        <img className="group list-group-image" src="http://placehold.it/400x250/000/fff" alt="" />
-                        <div className="caption">
-                            <h4 className="group inner list-group-item-heading">
-                                Product title</h4>
-                            <p className="group inner list-group-item-text">
-                                Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                                sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-                              </p>
-                            <div className="price">$21.000</div>
-                            <div className="">
-                                <a className="btn btn-success" href="">Add to wishlist</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="item col-xs-12 col-md-6 col-lg-4">
-                    <div className="thumbnail">
-                        <img className="group list-group-image" src="http://placehold.it/400x250/000/fff" alt="" />
-                        <div className="caption">
-                            <h4 className="group inner list-group-item-heading">
-                                Product title</h4>
-                            <p className="group inner list-group-item-text">
-                                Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                                sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-                              </p>
-                            <div className="price">$21.000</div>
-                            <div className="">
-                                <a className="btn btn-success" href="">Add to wishlist</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+              <ProductCard title={'Product title'} img={'http://placehold.it/400x250/000/fff'} price={25} description={'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.'} />
+              <ProductCard title={'Product title'} img={'http://placehold.it/400x250/000/fff'} price={25} description={'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.'} />
+              <ProductCard title={'Product title'} img={'http://placehold.it/400x250/000/fff'} price={25} description={'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.'} />
+              <ProductCard title={'Product title'} img={'http://placehold.it/400x250/000/fff'} price={25} description={'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.'} />
+              <ProductCard title={'Product title'} img={'http://placehold.it/400x250/000/fff'} price={25} description={'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.'} />
+              <ProductCard title={'Product title'} img={'http://placehold.it/400x250/000/fff'} price={25} description={'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.'} />
+              <ProductCard title={'Product title'} img={'http://placehold.it/400x250/000/fff'} price={25} description={'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.'} />
             </div>
         </div>
       </div>
