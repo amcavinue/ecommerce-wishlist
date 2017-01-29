@@ -13,7 +13,8 @@ const ProductCard = require('./product-card');
 const ProductSearch = React.createClass({
   getInitialState() {
     return {
-      itemClass: 'grid-group-item'
+      itemClass: 'grid-group-item',
+      query: ''
     };
   },
   gridToggle(e) {
@@ -28,8 +29,17 @@ const ProductSearch = React.createClass({
       itemClass: 'list-group-item'
     });
   },
+  updateQuery(e) {
+    this.setState({
+      query: e.target.value
+    });
+  },
   submit(e) {
     e.preventDefault();
+    store.dispatch(
+      actions.fetchProducts(this.state.query)
+    );
+    this.searchBox.value = '';
   },
   render() {
     return (
@@ -39,7 +49,7 @@ const ProductSearch = React.createClass({
         <form className="form-inline search-form" onSubmit={this.submit}>
           <div className="form-group">
             <label htmlFor="name">Search:</label>
-            <input className="form-control" type="text" id="search" name="search" required/>
+            <input className="form-control" ref={(input) => this.searchBox = input } type="text" id="search" name="search" onChange={this.updateQuery} required/>
           </div>
           <input className="btn btn-primary" type="submit" value="Submit" name="submit" />
         </form>

@@ -30,7 +30,9 @@ app.use(passport.initialize());
  */
 app.post('/api/users', routes.newUser);
 app.post('/api/login', passport.authenticate('local', {session: false}), routes.generateToken, routes.login);
+
 app.get('/api/restricted', authenticate, routes.restricted);
+
 app.get('/api/products/:query', routes.products);
 app.get('/api/products/asins/:asin', routes.asins);
 

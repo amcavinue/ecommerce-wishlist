@@ -129,9 +129,9 @@ const formatAmazonData = (data) => {
   data.forEach((product) => {
     compiled.push({
       title: product.ItemAttributes[0].Title[0],
-      img: product.LargeImage[0].URL[0],
-      price: product.ItemAttributes[0].ListPrice[0].FormattedPrice[0],
-      description: product.ItemAttributes[0].Feature, // Return the array of features.
+      img: product.LargeImage ? product.LargeImage[0].URL[0] : null,
+      price: product.ItemAttributes[0].ListPrice ? product.ItemAttributes[0].ListPrice[0].FormattedPrice[0] : null,
+      description: product.ItemAttributes[0].Feature ? product.ItemAttributes[0].Feature : null, // Return the array of features.
       asin: product.ASIN[0],
       link: product.DetailPageURL[0]
     });
@@ -149,7 +149,7 @@ const products = (req, res) => {
     // console.log(util.inspect(results, {showHidden: false, depth: null}), 33);
     return res.status(200).json(formatAmazonData(results));
   }).catch(function(err){
-    // console.log(err, 35);
+    console.log(err, 153);
     return res.status(400).json(err);
   });
 };

@@ -57,7 +57,7 @@ describe('Wishlist Server', () => {
   
   it('should get data from Amazon', (done) => {
     chai.request(app)
-      .get('/api/products/' + encodeURIComponent('towels'))
+      .get('/api/products/' + encodeURIComponent('soft towels'))
       .end(function(err, res) {
         should.equal(err, null);
         res.should.have.status(200);
