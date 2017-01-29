@@ -74,7 +74,7 @@ describe('Wishlist Server', () => {
       .end(function(err, res) {
         should.equal(err, null);
         res.should.have.status(200);
-        should.equal(res.body[0].ASIN[0], 'B00GXUVOME');
+        should.equal(res.body[0].asin, 'B00GXUVOME');
         done();
       });
     }, 1000); // Wait for 1 second to make sure not to hit the Amazon API limit.

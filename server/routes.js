@@ -123,14 +123,31 @@ const client = amazon.createClient({
   awsSecret: process.env.AWS_SECRET
 });
 
+const formatAmazonData = (data) => {
+  let compiled = [];
+  
+  data.forEach((product) => {
+    compiled.push({
+      title: product.ItemAttributes[0].Title[0],
+      img: product.LargeImage[0].URL[0],
+      price: product.ItemAttributes[0].ListPrice[0].FormattedPrice[0],
+      description: product.ItemAttributes[0].Feature, // Return the array of features.
+      asin: product.ASIN[0],
+      link: product.DetailPageURL[0]
+    });
+  });
+  
+  return compiled;
+};
+
 const products = (req, res) => {
   client.itemSearch({
     keywords: req.params.query,
-    itemPage: 3,
-    responseGroup: 'ItemAttributes,Offers,Images'
+    itemPage: 1,
+    responseGroup: 'ItemAttributes,Images'
   }).then(function(results){
     // console.log(util.inspect(results, {showHidden: false, depth: null}), 33);
-    return res.status(200).json(results);
+    return res.status(200).json(formatAmazonData(results));
   }).catch(function(err){
     // console.log(err, 35);
     return res.status(400).json(err);
@@ -140,10 +157,11 @@ const products = (req, res) => {
 const asins = (req, res) => {
   client.itemLookup({
     idType: 'ASIN',
-    itemId: req.params.asin
+    itemId: req.params.asin,
+    responseGroup: 'ItemAttributes,Images'
   }).then(function(results) {
     // console.log(util.inspect(results, {showHidden: false, depth: null}), 47);
-    return res.status(200).json(results);
+    return res.status(200).json(formatAmazonData(results));
   }).catch(function(err) {
     // console.log(err, 50);
     return res.status(400).json(err);
