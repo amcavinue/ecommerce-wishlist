@@ -17,13 +17,19 @@ describe('ProductSearch Component', () => {
     };
     
     renderer.render(
-      <ProductSearch/>
+      <Provider store={store}>
+        <ProductSearch/>
+      </Provider>
     );
     let result = renderer.getRenderOutput();
     
-    // Test the component.
-    TestUtils.isElementOfType(result, ProductSearch);
+    // Test the Provider component.
+    TestUtils.isElementOfType(result, Provider);
     TestUtils.isCompositeComponent(result);
+    
+    // Test the nested ProductSearch component.
+    TestUtils.isElementOfType(result.type.WrappedComponent[0], ProductSearch);
+    TestUtils.isCompositeComponent(result.type.WrappedComponent[0]);
     
     // Test nested elements.
     /*expect(result.props.children.length).to.equal(2);
