@@ -17,18 +17,6 @@ const ProductSearch = React.createClass({
       query: ''
     };
   },
-  gridToggle(e) {
-    e.preventDefault();
-    this.setState({
-      itemClass: 'grid-group-item'
-    });
-  },
-  listToggle(e) {
-    e.preventDefault();
-    this.setState({
-      itemClass: 'list-group-item'
-    });
-  },
   updateQuery(e) {
     this.setState({
       query: e.target.value
@@ -77,19 +65,6 @@ const ProductSearch = React.createClass({
         </form>
         
         <div className="container list-grid-view">
-            <div className="well well-sm">
-                <strong>Display </strong>
-                <div className="btn-group">
-                    <a href="" id="list" className="btn btn-default btn-sm" onClick={this.listToggle}>
-                      <span className="glyphicon glyphicon-th-list"></span>
-                      List
-                    </a> 
-                    <a href="" id="grid" className="btn btn-default btn-sm" onClick={this.gridToggle}>
-                      <span className="glyphicon glyphicon-th"></span>
-                      Grid
-                    </a>
-                </div>
-            </div>
             <div id="products" className="row list-group">
               {this.getProducts()}
             </div>
