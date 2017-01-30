@@ -17,7 +17,7 @@ describe('ProductCard Component', () => {
     };
     
     renderer.render(
-      <ProductCard itemClass={'grid-group-item'} title={'Product title'} img={'http://placehold.it/400x250/000/fff'} price={25} description={'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.'} />
+      <ProductCard itemClass={'grid-group-item'} title={'Product title'} img={'http://placehold.it/400x250/000/fff'} price={25} description={['Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.']} />
     );
     let result = renderer.getRenderOutput();
     

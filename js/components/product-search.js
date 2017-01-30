@@ -47,9 +47,10 @@ const ProductSearch = React.createClass({
     let products = [];
     
     if (results) {
-      results.forEach((product) => {
+      results.forEach((product, i) => {
         products.push(
-          <ProductCard 
+          <ProductCard
+            key={i}
             itemClass={this.state.itemClass} 
             title={product.title} 
             img={product.img} 
