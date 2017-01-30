@@ -36,6 +36,11 @@ app.get('/api/restricted', authenticate, routes.restricted);
 app.get('/api/products/:query', routes.products);
 app.get('/api/products/asins/:asin', routes.asins);
 
+app.get('/api/wishlists/:user');
+app.post('/api/wishlists/:user/:item');
+app.put('/api/wishlists/:user/:item');
+app.delete('/api/wishlists/:user/:item');
+
 /**
  * Run the server
  */

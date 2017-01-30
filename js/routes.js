@@ -13,6 +13,7 @@ const EcommerceApp = require('./components/ecommerce-app');
 const Login = require('./components/login');
 const NewUser = require('./components/new-user');
 const ProductSearch = require('./components/product-search');
+const Wishlist = require('./components/wishlist');
 
 const Routes = (props) => {
   return (
@@ -22,6 +23,7 @@ const Routes = (props) => {
         <Route path="login" component={Login} />
         <Route path="newuser" component={NewUser} />
         <Route path="search" component={ProductSearch} />
+        <Route path="wishlist" component={Wishlist} />
       </Route>
     </Router>
   );
