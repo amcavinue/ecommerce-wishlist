@@ -6,6 +6,7 @@ const combineReducers = require('redux').combineReducers;
 const initialState = {
     isLoggedIn: false,
     wishlist: null,
+    results: null,
     loggedOutPages: [
       {
         text: 'Login',
@@ -33,7 +34,7 @@ const loggedInReducer = (state = initialState.isLoggedIn, action) => {
   if (action.type === actions.NEW_USER_SUCCESS) {
     waitingDialog.hide();
     window.location = "/#/";
-    bootbox.alert('Congratulations! You\'re username has been added. Please log in.');
+    bootbox.alert('Congratulations! Your username has been added. Please log in.');
     return state;
     
   } else if (action.type === actions.NEW_USER_ERROR) {
@@ -65,22 +66,7 @@ const loggedInReducer = (state = initialState.isLoggedIn, action) => {
     waitingDialog.hide();
     return update(state, {$set: false});
     
-  } else if (action.type === actions.PRODUCTS_SUCCESS) {
-    waitingDialog.hide();
-    return state;
-    
-  } else if (action.type === actions.PRODUCTS_ERROR) {
-    waitingDialog.hide();
-    bootbox.alert('There was an error connecting to Amazon. Please try again later.');
-    return state;
-    
-  } else if (action.type === actions.PRODUCT_SUCCESS) {
-    return state;
-    
-  } else if (action.type === actions.PRODUCT_ERROR) {
-    return state;
-    
-  }
+  } 
   return state;
 }
 
@@ -97,11 +83,32 @@ const wishlistReducer = (state = initialState.wishlist, action) => {
   return state;
 }
 
+const resultsReducer = (state = initialState.results, action) => {
+  if (action.type === actions.PRODUCTS_SUCCESS) {
+    waitingDialog.hide();
+    return update(state, {$set: action.data});
+    
+  } else if (action.type === actions.PRODUCTS_ERROR) {
+    waitingDialog.hide();
+    bootbox.alert('There was an error connecting to Amazon. Please try again later.');
+    return state;
+    
+  } else if (action.type === actions.PRODUCT_SUCCESS) {
+    return state;
+    
+  } else if (action.type === actions.PRODUCT_ERROR) {
+    return state;
+    
+  }
+  return state;
+}
+
 const reducer = combineReducers({
     isLoggedIn: loggedInReducer,
     loggedOutPages: loggedOutPagesReducer,
     loggedInPages: loggedInPagesReducer,
-    wishlist: wishlistReducer
+    wishlist: wishlistReducer,
+    results: resultsReducer
 });
 
 exports.reducer = reducer;

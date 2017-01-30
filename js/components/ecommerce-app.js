@@ -99,7 +99,9 @@ const mapStateToProps = (state, props) => {
   return {
     isLoggedIn: state.isLoggedIn,
     loggedOutPages: state.loggedOutPages,
-    loggedInPages: state.loggedInPages
+    loggedInPages: state.loggedInPages,
+    wishlist: state.wishlist,
+    results: state.results,
   };
 };
 

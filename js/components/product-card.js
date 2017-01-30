@@ -15,13 +15,6 @@ const ProductCard = React.createClass({
       data1: null
     };
   },
-  formatDollar(num) {
-    // http://stackoverflow.com/questions/149055/how-can-i-format-numbers-as-money-in-javascript
-    var p = num.toFixed(2).split(".");
-    return "$" + p[0].split("").reverse().reduce(function(acc, num, i, orig) {
-      return  num=="-" ? acc : num + (i && !(i % 3) ? "," : "") + acc;
-    }, "") + "." + p[1];
-  },
   render() {
     return (
       <div className="product-card-component">
@@ -33,7 +26,7 @@ const ProductCard = React.createClass({
               <p className="group inner list-group-item-text">
                 {this.props.description}
               </p>
-              <div className="price">{this.formatDollar(this.props.price)}</div>
+              <div className="price">{this.props.price}</div>
               <a className="btn btn-success" href="">Add to wishlist</a>
             </div>
           </div>

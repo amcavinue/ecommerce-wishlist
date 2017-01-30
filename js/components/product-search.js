@@ -41,6 +41,27 @@ const ProductSearch = React.createClass({
       actions.fetchProducts(this.state.query)
     );
   },
+  getProducts() {
+    // let results = store.getState().results;
+    let results = this.props.results;
+    let products = [];
+    
+    if (results) {
+      results.forEach((product) => {
+        products.push(
+          <ProductCard 
+            itemClass={this.state.itemClass} 
+            title={product.title} 
+            img={product.img} 
+            price={product.price} 
+            description={product.description} 
+          />
+        );
+      });
+    }
+    
+    return products;
+  },
   render() {
     return (
       <div className="product-search-component">
@@ -69,13 +90,7 @@ const ProductSearch = React.createClass({
                 </div>
             </div>
             <div id="products" className="row list-group">
-              <ProductCard itemClass={this.state.itemClass} title={'Product title'} img={'http://placehold.it/400x250/000/fff'} price={25} description={'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.'} />
-              <ProductCard itemClass={this.state.itemClass} title={'Product title'} img={'http://placehold.it/400x250/000/fff'} price={25} description={'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.'} />
-              <ProductCard itemClass={this.state.itemClass} title={'Product title'} img={'http://placehold.it/400x250/000/fff'} price={25} description={'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.'} />
-              <ProductCard itemClass={this.state.itemClass} title={'Product title'} img={'http://placehold.it/400x250/000/fff'} price={25} description={'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.'} />
-              <ProductCard itemClass={this.state.itemClass} title={'Product title'} img={'http://placehold.it/400x250/000/fff'} price={25} description={'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.'} />
-              <ProductCard itemClass={this.state.itemClass} title={'Product title'} img={'http://placehold.it/400x250/000/fff'} price={25} description={'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.'} />
-              <ProductCard itemClass={this.state.itemClass} title={'Product title'} img={'http://placehold.it/400x250/000/fff'} price={25} description={'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.'} />
+              {this.getProducts()}
             </div>
         </div>
       </div>
@@ -83,4 +98,16 @@ const ProductSearch = React.createClass({
   }
 });
 
-module.exports = ProductSearch;
+const mapStateToProps = (state, props) => {
+  return {
+    isLoggedIn: state.isLoggedIn,
+    loggedOutPages: state.loggedOutPages,
+    loggedInPages: state.loggedInPages,
+    wishlist: state.wishlist,
+    results: state.results,
+  };
+};
+
+const Container = connect(mapStateToProps)(ProductSearch);
+
+module.exports = Container;

@@ -8,6 +8,7 @@ const browserHistory = router.browserHistory;
 const hashHistory = router.hashHistory;
 const IndexRoute = router.IndexRoute;
 
+const store = require('./store');
 const EcommerceApp = require('./components/ecommerce-app');
 const Login = require('./components/login');
 const NewUser = require('./components/new-user');
