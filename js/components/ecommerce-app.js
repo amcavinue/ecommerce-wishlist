@@ -10,7 +10,7 @@ const actions = require('../actions/index');
 
 const EcommerceApp = React.createClass({
   componentDidMount() {
-    // When the page is reloaded, log the user out and return to the login page.
+    // Log the user out and return to the login page when reloaded.
     store.dispatch(actions.logout());
   },
   showLogoutModal() {
@@ -22,14 +22,14 @@ const EcommerceApp = React.createClass({
     $('#logout-modal').modal('hide');
   },
   createMenu() {
-    let state = store.getState();
+    let appState = store.getState();
     let currPath = this.props.location.pathname;
     let pages;
     
-    if (state.isLoggedIn) {
-      pages = state.loggedInPages;
+    if (appState.isLoggedIn) {
+      pages = appState.loggedInPages;
     } else {
-      pages = state.loggedOutPages;
+      pages = appState.loggedOutPages;
     }
     
     return pages.map((page, i, arr) => {
@@ -45,6 +45,8 @@ const EcommerceApp = React.createClass({
     });
   },
   render() {
+    let appState = store.getState();
+    
     return (
       <div>
         <nav className="navbar navbar-default">
@@ -59,7 +61,7 @@ const EcommerceApp = React.createClass({
                 <span className="icon-bar"></span>
                 <span className="icon-bar"></span>
               </button>
-              <Link className="navbar-brand" to={'/'}>Ecommerce Wishlist</Link>
+              <Link className="navbar-brand" to={appState.isLoggedIn ? '/search' : '/'}>Ecommerce Wishlist</Link>
             </div>
         
             <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -97,7 +99,9 @@ const mapStateToProps = (state, props) => {
   return {
     isLoggedIn: state.isLoggedIn,
     loggedOutPages: state.loggedOutPages,
-    loggedInPages: state.loggedInPages
+    loggedInPages: state.loggedInPages,
+    wishlist: state.wishlist,
+    results: state.results,
   };
 };
 

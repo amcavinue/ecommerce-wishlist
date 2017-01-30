@@ -55,6 +55,31 @@ describe('Wishlist Server', () => {
       });
   });
   
+  it('should get data from Amazon', (done) => {
+    chai.request(app)
+      .get('/api/products/' + encodeURIComponent('soft towels'))
+      .end(function(err, res) {
+        should.equal(err, null);
+        res.should.have.status(200);
+        expect(res.body).to.be.an('array');
+        done();
+      });
+  });
+  
+  it('should get a single item from Amazon', function(done) {
+    this.timeout(3000);
+    setTimeout(() => {
+      chai.request(app)
+      .get('/api/products/asins/' + encodeURIComponent('B00GXUVOME'))
+      .end(function(err, res) {
+        should.equal(err, null);
+        res.should.have.status(200);
+        should.equal(res.body[0].asin, 'B00GXUVOME');
+        done();
+      });
+    }, 1000); // Wait for 1 second to make sure not to hit the Amazon API limit.
+  });
+  
   after((done) => {
     User.findOneAndRemove({username: 'testUser0'}).exec();
     done();

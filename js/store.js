@@ -7,3 +7,5 @@ const reducers = require('./reducers/index');
 
 const store = createStore(reducers.reducer, applyMiddleware(thunk));
 module.exports  = store;
+
+const ProductSearch = require('./components/product-search');
