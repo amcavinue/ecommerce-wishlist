@@ -30,9 +30,5 @@ describe('ProductSearch Component', () => {
     // Test the nested ProductSearch component.
     TestUtils.isElementOfType(result.type.WrappedComponent[0], ProductSearch);
     TestUtils.isCompositeComponent(result.type.WrappedComponent[0]);
-    
-    // Test nested elements.
-    /*expect(result.props.children.length).to.equal(2);
-    expect(result.props.children[0].type).to.equal('h1');*/
   });
 });

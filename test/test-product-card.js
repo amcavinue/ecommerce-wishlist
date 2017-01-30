@@ -24,9 +24,5 @@ describe('ProductCard Component', () => {
     // Test the component.
     TestUtils.isElementOfType(result, ProductCard);
     TestUtils.isCompositeComponent(result);
-    
-    // Test nested elements.
-    /*expect(result.props.children.length).to.equal(2);
-    expect(result.props.children[0].type).to.equal('h1');*/
   });
 });
