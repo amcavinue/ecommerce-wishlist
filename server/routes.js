@@ -168,9 +168,83 @@ const asins = (req, res) => {
   });
 };
 
+const getWishlist = (req, res) => {
+  User.findOne({
+      username: req.params.user
+    }, (err, user) => {
+      if (err || user === null) {
+        return res.status(500).json({
+          message: 'Error accessing database.'
+        });
+      }
+      
+      return res.status(200).json(user.wishlist);
+    });
+};
+
+const addWishlistItem = (req, res) => {
+  User.findOne({
+      username: req.params.user
+    }, (err, user) => {
+      if (err || user === null) {
+        return res.status(500).json({
+          message: 'Error accessing database.'
+        });
+      }
+      
+      user.wishlist.push(req.body.item);
+      user.save((err, updatedUser) => {
+        if (err || updatedUser === null) {
+          return res.status(500).json({
+            message: 'Error accessing database.'
+          });
+        }
+        
+        return res.status(201);
+      });
+    });
+  res.status(200).json(req.user);
+};
+
+const removeWishlistItem = (req, res) => {
+  User.findOne({
+      username: req.params.user
+    }, (err, user) => {
+      if (err || user === null) {
+        return res.status(500).json({
+          message: 'Error accessing database.'
+        });
+      }
+      
+      user.wishlist.find({
+        asin: req.body.asin
+      }, (err, item) => {
+        if (err || item === null) {
+          return res.status(500).json({
+            message: 'Error accessing database.'
+          });
+        }
+        
+        item.remove();
+        user.save((err, updatedUser) => {
+          if (err || updatedUser === null) {
+            return res.status(500).json({
+              message: 'Error accessing database.'
+            });
+          }
+          
+          return res.status(201);
+        });
+      });
+    });
+};
+
 exports.newUser = newUser;
 exports.generateToken = generateToken;
 exports.login = login;
 exports.restricted = restricted;
 exports.products = products;
 exports.asins = asins;
+exports.getWishlist = getWishlist;
+exports.wishlistItem = addWishlistItem;
+exports.removeWishlistItem = removeWishlistItem;

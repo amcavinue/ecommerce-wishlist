@@ -10,6 +10,38 @@ const UserSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true
+    },
+    wishlist: {
+      type: [
+        {
+          title: {
+            type: String,
+            required: false
+          },
+          img: {
+            type: String,
+            required: false
+          },
+          price: {
+            type: String,
+            required: false
+          },
+          description: {
+            type: String,
+            required: false
+          },
+          asin: {
+            type: String,
+            required: false
+          },
+          link: {
+            type: String,
+            required: false
+          }
+        }
+      ],
+      required: false,
+      default: []
     }
 });
 

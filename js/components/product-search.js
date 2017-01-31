@@ -50,8 +50,6 @@ const ProductSearch = React.createClass({
     return products;
   },
   render() {
-    console.log(store.getState(), 52);
-    
     return (
       <div className="product-search-component">
         <h1 className="text-center">Search for Some of Your Favorite Products!</h1>
