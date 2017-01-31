@@ -79,20 +79,6 @@ const loggedInPagesReducer = (state = initialState.loggedInPages, action) => {
 }
 
 const wishlistReducer = (state = initialState.wishlist, action) => {
-  if (action.type === actions.PRODUCTS_SUCCESS) {
-    waitingDialog.hide();
-    return update(state, {$set: action.data});
-    
-  } else if (action.type === actions.PRODUCTS_ERROR) {
-    waitingDialog.hide();
-    bootbox.alert('There was an error connecting to Amazon. Please try again later.');
-    return state;
-    
-  }
-  return state;
-}
-
-const resultsReducer = (state = initialState.results, action) => {
   if (action.type === actions.WISHLIST_SUCCESS) {
     return update(state, {$set: action.data});
     
@@ -112,6 +98,26 @@ const resultsReducer = (state = initialState.results, action) => {
     
   } else if (action.type === actions.REMOVE_PRODUCT_ERROR) {
     bootbox.alert('There was a server error. Please try again later.');
+    return state;
+    
+  }
+  return state;
+}
+
+const resultsReducer = (state = initialState.results, action) => {
+  if (action.type === actions.PRODUCTS_SUCCESS) {
+    waitingDialog.hide();
+    return update(state, {$set: action.data});
+    
+  } else if (action.type === actions.PRODUCTS_ERROR) {
+    waitingDialog.hide();
+    bootbox.alert('There was an error connecting to Amazon. Please try again later.');
+    return state;
+    
+  } else if (action.type === actions.PRODUCT_SUCCESS) {
+    return state;
+    
+  } else if (action.type === actions.PRODUCT_ERROR) {
     return state;
     
   }
