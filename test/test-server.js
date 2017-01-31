@@ -80,6 +80,29 @@ describe('Wishlist Server', () => {
     }, 1000); // Wait for 1 second to make sure not to hit the Amazon API limit.
   });
   
+  it('should add an item to the wishlist', function(done) {
+    chai.request(app)
+      .post('/api/wishlists/testUser0')
+      .send({
+        item: {
+          title: 'test item',
+          img: 'test.jpg',
+          price: '$000.00',
+          description: [
+            'abc',
+            'def'
+          ],
+          asin: '12345',
+          link: 'www.test.com'
+        }
+      })
+      .end(function(err, res) {
+        should.equal(err, null);
+        res.should.have.status(201);
+        done();
+      });
+  });
+  
   after((done) => {
     User.findOneAndRemove({username: 'testUser0'}).exec();
     done();

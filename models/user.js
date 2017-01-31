@@ -27,7 +27,7 @@ const UserSchema = new mongoose.Schema({
             required: false
           },
           description: {
-            type: String,
+            type: Array,
             required: false
           },
           asin: {

@@ -200,10 +200,9 @@ const addWishlistItem = (req, res) => {
           });
         }
         
-        return res.status(201);
+        return res.status(201).send();
       });
     });
-  res.status(200).json(req.user);
 };
 
 const removeWishlistItem = (req, res) => {
@@ -233,7 +232,7 @@ const removeWishlistItem = (req, res) => {
             });
           }
           
-          return res.status(201);
+          return res.status(201).send();
         });
       });
     });
@@ -246,5 +245,5 @@ exports.restricted = restricted;
 exports.products = products;
 exports.asins = asins;
 exports.getWishlist = getWishlist;
-exports.wishlistItem = addWishlistItem;
+exports.addWishlistItem = addWishlistItem;
 exports.removeWishlistItem = removeWishlistItem;
