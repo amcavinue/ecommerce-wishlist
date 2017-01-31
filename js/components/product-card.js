@@ -21,6 +21,13 @@ const ProductCard = React.createClass({
     }
     return result;
   },
+  getButtons() {
+    if (this.props.cardType === 'wishlist') {
+      return <a className="caption-item btn btn-danger" href="">Delete</a>;
+    } else if (this.props.cardType === 'search') {
+      return <a className="caption-item btn btn-success add-to-wishlist" href="">Add to wishlist</a>
+    }
+  },
   render() {
     return (
       <div className="product-card-component">
@@ -33,7 +40,7 @@ const ProductCard = React.createClass({
                 {this.getDescriptions(this.props.description)}
               </ul>
               <div className="caption-item price">{this.props.price}</div>
-              <a className="caption-item btn btn-success add-to-wishlist" href="">Add to wishlist</a>
+              {this.getButtons()}
             </div>
           </div>
         </div>
