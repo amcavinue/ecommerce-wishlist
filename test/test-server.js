@@ -103,6 +103,28 @@ describe('Wishlist Server', () => {
       });
   });
   
+  it('should get the wishlist with the single item', function(done) {
+    chai.request(app)
+      .get('/api/wishlists/testUser0')
+      .end(function(err, res) {
+        should.equal(err, null);
+        res.should.have.status(200);
+        expect(res.body[0].asin).to.equal('12345');
+        done();
+      });
+  });
+  
+  it('should remove an item from the wishlist', function(done) {
+    chai.request(app)
+      .delete('/api/wishlists/testUser0')
+      .send({asin: '12345'})
+      .end(function(err, res) {
+        should.equal(err, null);
+        res.should.have.status(200);
+        done();
+      });
+  });
+  
   after((done) => {
     User.findOneAndRemove({username: 'testUser0'}).exec();
     done();

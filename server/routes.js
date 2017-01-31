@@ -215,25 +215,19 @@ const removeWishlistItem = (req, res) => {
         });
       }
       
-      user.wishlist.find({
-        asin: req.body.asin
-      }, (err, item) => {
-        if (err || item === null) {
+      let prodIndex = user.wishlist.findIndex((product) => {
+        return product.asin === req.body.asin;
+      });
+      user.wishlist.splice(prodIndex, 1);
+      
+      user.save((err, updatedUser) => {
+        if (err || updatedUser === null) {
           return res.status(500).json({
             message: 'Error accessing database.'
           });
         }
         
-        item.remove();
-        user.save((err, updatedUser) => {
-          if (err || updatedUser === null) {
-            return res.status(500).json({
-              message: 'Error accessing database.'
-            });
-          }
-          
-          return res.status(201).send();
-        });
+        return res.status(200).json(updatedUser);
       });
     });
 };
