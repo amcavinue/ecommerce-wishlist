@@ -13,7 +13,6 @@ const ProductCard = require('./product-card');
 const ProductSearch = React.createClass({
   getInitialState() {
     return {
-      itemClass: 'grid-group-item',
       query: ''
     };
   },
@@ -30,7 +29,6 @@ const ProductSearch = React.createClass({
     );
   },
   getProducts() {
-    // let results = store.getState().results;
     let results = this.props.results;
     let products = [];
     
@@ -39,7 +37,6 @@ const ProductSearch = React.createClass({
         products.push(
           <ProductCard
             key={i}
-            itemClass={this.state.itemClass} 
             title={product.title} 
             img={product.img} 
             price={product.price} 
@@ -52,6 +49,8 @@ const ProductSearch = React.createClass({
     return products;
   },
   render() {
+    console.log(store.getState(), 52);
+    
     return (
       <div className="product-search-component">
         <h1 className="text-center">Search for Some of Your Favorite Products!</h1>

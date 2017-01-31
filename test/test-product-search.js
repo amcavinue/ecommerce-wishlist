@@ -12,9 +12,6 @@ const ProductSearch = require('../js/components/product-search');
 describe('ProductSearch Component', () => {
   it('Renders the component',  () => {
     let renderer = TestUtils.createRenderer();
-    let callback = () => {
-      return true;
-    };
     
     renderer.render(
       <Provider store={store}>

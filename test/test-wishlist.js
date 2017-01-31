@@ -14,12 +14,18 @@ describe('Wishlist Component', () => {
     let renderer = TestUtils.createRenderer();
     
     renderer.render(
-      <Wishlist />
+      <Provider store={store}>
+        <Wishlist />
+      </Provider>
     );
     let result = renderer.getRenderOutput();
     
-    // Test the component.
-    TestUtils.isElementOfType(result, Wishlist);
+    // Test the Provider component.
+    TestUtils.isElementOfType(result, Provider);
     TestUtils.isCompositeComponent(result);
+    
+    // Test the nested Wishlist component.
+    TestUtils.isElementOfType(result.type.WrappedComponent[0], Wishlist);
+    TestUtils.isCompositeComponent(result.type.WrappedComponent[0]);
   });
 });
