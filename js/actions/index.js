@@ -215,6 +215,154 @@ function productError(err) {
     };
 }
 
+const fetchWishlist = (username) => {
+  return (dispatch) => {
+    let init = {
+      method: 'GET',
+    };
+    
+    return fetch('/api/wishlists/' + encodeURIComponent(username), init)
+    .then(function(response) {
+      // If any response other than successful.
+      if (response.status < 200 || response.status >= 300) {
+        let error = new Error(response.statusText);
+        error.response = response;
+        throw error;
+      }
+      return response;
+    })
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(data) {
+      return dispatch(
+        wishlistSuccess(data)
+      );
+    })
+    .catch(function(error) {
+      return dispatch(
+        wishlistError(error)
+      );
+    });
+  };
+};
+
+const WISHLIST_SUCCESS = 'WISHLIST_SUCCESS';
+function wishlistSuccess(data) {
+    return {
+        type: WISHLIST_SUCCESS,
+        data: data
+    };
+}
+
+const WISHLIST_ERROR = 'WISHLIST_ERROR';
+function wishlistError(err) {
+    return {
+        type: WISHLIST_ERROR,
+        err: err
+    };
+}
+
+const fetchAddProduct = (username, product) => {
+  return (dispatch) => {
+    let init = {
+      method: 'post',
+      body: JSON.stringify(product)
+    };
+    
+    return fetch('/api/wishlists/' + encodeURIComponent(username), init)
+    .then(function(response) {
+      // If any response other than successful.
+      if (response.status < 200 || response.status >= 300) {
+        let error = new Error(response.statusText);
+        error.response = response;
+        throw error;
+      }
+      return response;
+    })
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(data) {
+      return dispatch(
+        addProductSuccess(data)
+      );
+    })
+    .catch(function(error) {
+      return dispatch(
+        addProductError(error)
+      );
+    });
+  };
+};
+
+const ADD_PRODUCT_SUCCESS = 'ADD_PRODUCT_SUCCESS';
+function addProductSuccess(data) {
+    return {
+        type: ADD_PRODUCT_SUCCESS,
+        data: data
+    };
+}
+
+const ADD_PRODUCT_ERROR = 'ADD_PRODUCT_ERROR';
+function addProductError(err) {
+    return {
+        type: ADD_PRODUCT_ERROR,
+        err: err
+    };
+}
+
+const fetchRemoveProduct = (username, asin) => {
+  return (dispatch) => {
+    let init = {
+      method: 'DELETE',
+      body: {
+        asin: asin
+      }
+    };
+    
+    return fetch('/api/wishlists/' + encodeURIComponent(username), init)
+    .then(function(response) {
+      // If any response other than successful.
+      if (response.status < 200 || response.status >= 300) {
+        let error = new Error(response.statusText);
+        error.response = response;
+        throw error;
+      }
+      return response;
+    })
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(data) {
+      return dispatch(
+        removeProductSuccess(data)
+      );
+    })
+    .catch(function(error) {
+      return dispatch(
+        removeProductError(error)
+      );
+    });
+  };
+};
+
+const REMOVE_PRODUCT_SUCCESS = 'REMOVE_PRODUCT_SUCCESS';
+function removeProductSuccess(data) {
+    return {
+        type: REMOVE_PRODUCT_SUCCESS,
+        data: data
+    };
+}
+
+const REMOVE_PRODUCT_ERROR = 'REMOVE_PRODUCT_ERROR';
+function removeProductError(err) {
+    return {
+        type: REMOVE_PRODUCT_ERROR,
+        err: err
+    };
+}
+
 exports.fetchLogin = fetchLogin;
 exports.LOGIN_ERROR = LOGIN_ERROR;
 exports.loginError = loginError;
@@ -241,3 +389,21 @@ exports.PRODUCT_SUCCESS = PRODUCT_SUCCESS;
 exports.productSuccess = productSuccess;
 exports.PRODUCT_ERROR = PRODUCT_ERROR;
 exports.productError = productError;
+
+exports.fetchWishlist = fetchWishlist;
+exports.WISHLIST_SUCCESS = WISHLIST_SUCCESS;
+exports.wishlistSuccess = wishlistSuccess;
+exports.WISHLIST_ERROR = WISHLIST_ERROR;
+exports.wishlistError = wishlistError;
+
+exports.fetchAddProduct = fetchAddProduct;
+exports.ADD_PRODUCT_SUCCESS = ADD_PRODUCT_SUCCESS;
+exports.addProductSuccess = addProductSuccess;
+exports.ADD_PRODUCT_ERROR = ADD_PRODUCT_ERROR;
+exports.addProductError = addProductError;
+
+exports.fetchRemoveProduct = fetchRemoveProduct;
+exports.REMOVE_PRODUCT_SUCCESS = REMOVE_PRODUCT_SUCCESS;
+exports.removeProductSuccess = removeProductSuccess;
+exports.REMOVE_PRODUCT_ERROR = REMOVE_PRODUCT_ERROR;
+exports.removeProductError = removeProductError;

@@ -218,7 +218,9 @@ const removeWishlistItem = (req, res) => {
       let prodIndex = user.wishlist.findIndex((product) => {
         return product.asin === req.body.asin;
       });
-      user.wishlist.splice(prodIndex, 1);
+      if (prodIndex !== -1) {
+        user.wishlist.splice(prodIndex, 1);
+      }
       
       user.save((err, updatedUser) => {
         if (err || updatedUser === null) {
