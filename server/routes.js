@@ -200,7 +200,7 @@ const addWishlistItem = (req, res) => {
           });
         }
         
-        return res.status(201).send();
+        return res.status(201).json(updatedUser.wishlist);
       });
     });
 };
@@ -229,7 +229,7 @@ const removeWishlistItem = (req, res) => {
           });
         }
         
-        return res.status(200).json(updatedUser);
+        return res.status(200).json(updatedUser.wishlist);
       });
     });
 };
