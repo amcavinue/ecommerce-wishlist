@@ -16,6 +16,13 @@ const Wishlist = React.createClass({
       data1: null
     };
   },
+  componentDidMount() {
+    console.log(store.getState(), 20);
+    
+    store.dispatch(
+      actions.fetchWishlist(store.getState().username)
+    );
+  },
   getProducts() {
     let wishlist = this.props.wishlist;
     let products = [];
@@ -59,6 +66,7 @@ const mapStateToProps = (state, props) => {
     loggedInPages: state.loggedInPages,
     wishlist: state.wishlist,
     results: state.results,
+    username: state.username
   };
 };
 

@@ -79,6 +79,7 @@ const mapStateToProps = (state, props) => {
     loggedInPages: state.loggedInPages,
     wishlist: state.wishlist,
     results: state.results,
+    username: state.username
   };
 };
 
