@@ -266,8 +266,13 @@ function wishlistError(err) {
 const fetchAddProduct = (username, product) => {
   return (dispatch) => {
     let init = {
-      method: 'post',
-      body: JSON.stringify(product)
+      method: 'POST',
+      headers: new Headers({
+          "Content-Type": "application/json"
+      }),
+      body: JSON.stringify({
+        item: product
+      })
     };
     
     return fetch('/api/wishlists/' + encodeURIComponent(username), init)

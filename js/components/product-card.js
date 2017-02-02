@@ -33,7 +33,17 @@ const ProductCard = React.createClass({
     });
   },
   addItem() {
-    
+    store.dispatch(
+      actions.fetchAddProduct(this.props.username,  {
+        "title": this.props.title,
+        "img": this.props.img,
+        "price": this.props.price,
+        "asin": this.props.asin,
+        "link": this.props.link,
+        "description": this.props.description
+      })
+    );
+    waitingDialog.show();
   },
   getButtons() {
     if (this.props.cardType === 'wishlist') {

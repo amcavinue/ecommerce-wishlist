@@ -88,9 +88,11 @@ const wishlistReducer = (state = initialState.wishlist, action) => {
     return state;
     
   } else if (action.type === actions.ADD_PRODUCT_SUCCESS) {
+    waitingDialog.hide();
     return update(state, {$set: action.data});
     
   } else if (action.type === actions.ADD_PRODUCT_ERROR) {
+    waitingDialog.hide();
     bootbox.alert('There was a server error. Please try again later.');
     return state;
     
