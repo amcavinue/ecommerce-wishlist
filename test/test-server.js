@@ -83,6 +83,7 @@ describe('Wishlist Server', () => {
   it('should add an item to the wishlist', function(done) {
     chai.request(app)
       .post('/api/wishlists/testUser0')
+      .set('Authorization', 'Bearer ' + webToken)
       .send({
         item: {
           title: 'test item',
@@ -106,6 +107,7 @@ describe('Wishlist Server', () => {
   it('should get the wishlist with the single item', function(done) {
     chai.request(app)
       .get('/api/wishlists/testUser0')
+      .set('Authorization', 'Bearer ' + webToken)
       .end(function(err, res) {
         should.equal(err, null);
         res.should.have.status(200);
@@ -117,6 +119,7 @@ describe('Wishlist Server', () => {
   it('should remove an item from the wishlist', function(done) {
     chai.request(app)
       .delete('/api/wishlists/testUser0/12345')
+      .set('Authorization', 'Bearer ' + webToken)
       .end(function(err, res) {
         should.equal(err, null);
         res.should.have.status(200);
