@@ -21,6 +21,35 @@ const ProductCard = React.createClass({
     }
     return result;
   },
+  deleteItem() {
+    bootbox.confirm('Are you sure you want to delete this item?', (result) => {
+      if (result) {
+        store.dispatch(
+          actions.fetchRemoveProduct(this.props.username, this.props.asin)
+        );
+      }
+    });
+  },
+  addItem() {
+    store.dispatch(
+      actions.fetchAddProduct(this.props.username,  {
+        "title": this.props.title,
+        "img": this.props.img,
+        "price": this.props.price,
+        "asin": this.props.asin,
+        "link": this.props.link,
+        "description": this.props.description
+      })
+    );
+    waitingDialog.show();
+  },
+  getButtons() {
+    if (this.props.cardType === 'wishlist') {
+      return <a className="caption-item btn btn-danger" onClick={this.deleteItem}>Delete</a>;
+    } else if (this.props.cardType === 'search') {
+      return <a className="caption-item btn btn-success add-to-wishlist" onClick={this.addItem}>Add to wishlist</a>
+    }
+  },
   render() {
     return (
       <div className="product-card-component">
@@ -28,12 +57,12 @@ const ProductCard = React.createClass({
           <div className="thumbnail">
             <img className="list-group-image" src={this.props.img} alt="" />
             <div className="caption">
-              <h4 className="caption-item list-group-item-heading">{this.props.title}</h4>
+              <h4 className="caption-item list-group-item-heading"><a href={this.props.link} target="_blank">{this.props.title}</a></h4>
               <ul className="caption-item list-group-item-text">
                 {this.getDescriptions(this.props.description)}
               </ul>
               <div className="caption-item price">{this.props.price}</div>
-              <a className="caption-item btn btn-success add-to-wishlist" href="">Add to wishlist</a>
+              {this.getButtons()}
             </div>
           </div>
         </div>

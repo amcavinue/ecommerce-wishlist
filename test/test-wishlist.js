@@ -7,15 +7,15 @@ const Provider = require('react-redux').Provider;
 
 const store = require('../js/store');
 const actions = require('../js/actions/index');
-const ProductSearch = require('../js/components/product-search');
+const Wishlist = require('../js/components/wishlist');
 
-describe('ProductSearch Component', () => {
+describe('Wishlist Component', () => {
   it('Renders the component',  () => {
     let renderer = TestUtils.createRenderer();
     
     renderer.render(
       <Provider store={store}>
-        <ProductSearch/>
+        <Wishlist />
       </Provider>
     );
     let result = renderer.getRenderOutput();
@@ -24,8 +24,8 @@ describe('ProductSearch Component', () => {
     TestUtils.isElementOfType(result, Provider);
     TestUtils.isCompositeComponent(result);
     
-    // Test the nested ProductSearch component.
-    TestUtils.isElementOfType(result.type.WrappedComponent[0], ProductSearch);
+    // Test the nested Wishlist component.
+    TestUtils.isElementOfType(result.type.WrappedComponent[0], Wishlist);
     TestUtils.isCompositeComponent(result.type.WrappedComponent[0]);
   });
 });

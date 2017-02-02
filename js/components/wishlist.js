@@ -10,34 +10,29 @@ const store = require('../store');
 const actions = require('../actions/index');
 const ProductCard = require('./product-card');
 
-const ProductSearch = React.createClass({
+const Wishlist = React.createClass({
   getInitialState() {
     return {
-      query: ''
+      data1: null
     };
   },
-  updateQuery(e) {
-    this.setState({
-      query: e.target.value
-    });
-  },
-  submit(e) {
-    e.preventDefault();
-    waitingDialog.show();
+  componentDidMount() {
+    console.log(store.getState(), 20);
+    
     store.dispatch(
-      actions.fetchProducts(this.state.query)
+      actions.fetchWishlist(store.getState().session.username)
     );
   },
   getProducts() {
-    let results = this.props.results;
+    let wishlist = this.props.wishlist;
     let products = [];
     
-    if (results) {
-      results.forEach((product, i) => {
+    if (wishlist) {
+      wishlist.forEach((product, i) => {
         products.push(
           <ProductCard
             key={i}
-            cardType='search'
+            cardType='wishlist'
             link={product.link}
             asin={product.asin}
             username={this.props.session.username}
@@ -54,16 +49,8 @@ const ProductSearch = React.createClass({
   },
   render() {
     return (
-      <div className="product-search-component">
-        <h1 className="text-center">Search for Some of Your Favorite Products!</h1>
-        
-        <form className="form-inline search-form" onSubmit={this.submit}>
-          <div className="form-group">
-            <label htmlFor="name">Search:</label>
-            <input className="form-control" ref={(input) => this.searchBox = input } type="text" id="search" name="search" onChange={this.updateQuery} required/>
-          </div>
-          <input className="btn btn-primary" type="submit" value="Submit" name="submit" />
-        </form>
+      <div className="wishlist-component">
+        <h1 className="text-center">Manage Your Wishlist</h1>
         
         <div className="container list-grid-view">
             <div id="products" className="row list-group">
@@ -85,6 +72,6 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-const Container = connect(mapStateToProps)(ProductSearch);
+const Container = connect(mapStateToProps)(Wishlist);
 
 module.exports = Container;
