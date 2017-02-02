@@ -6,7 +6,7 @@ const combineReducers = require('redux').combineReducers;
 const initialState = {
     session: {
       isLoggedIn: false,
-      username: 'testUser1',
+      username: false,
     },
     wishlist: null,
     results: null,
