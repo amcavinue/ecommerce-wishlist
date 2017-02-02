@@ -4,8 +4,10 @@ const update = require('react-addons-update');
 const combineReducers = require('redux').combineReducers;
 
 const initialState = {
-    isLoggedIn: false,
-    username: 'testUser1',
+    session: {
+      isLoggedIn: false,
+      username: 'testUser1',
+    },
     wishlist: null,
     results: null,
     loggedOutPages: [
@@ -32,51 +34,7 @@ const initialState = {
 };
 
 const loggedInReducer = (state = initialState.isLoggedIn, action) => {
-  if (action.type === actions.NEW_USER_SUCCESS) {
-    waitingDialog.hide();
-    window.location = "/#/";
-    bootbox.alert('Congratulations! Your username has been added. Please log in.');
-    return state;
-    
-  } else if (action.type === actions.NEW_USER_ERROR) {
-    waitingDialog.hide();
-    if (action.err.response.status === 409) {
-      bootbox.alert('That username is already taken. Please choose another.');
-    } else {
-      bootbox.alert('There was a server error. Please try again later.');
-    }
-    return state;
-    
-  } else if (action.type === actions.LOGIN_SUCCESS) {
-    waitingDialog.hide();
-    window.location = "/#/search";
-    return update(state, {$set: true});
-    
-  } else if (action.type === actions.LOGIN_ERROR) {
-    waitingDialog.hide();
-    if (action.err.response.status === 401) {
-      bootbox.alert('Incorrect username or password.');
-    } else {
-      bootbox.alert('There was a server error. Please try again later.');
-    }
-    return state;
-    
-  } else if (action.type === actions.LOGOUT) {
-    sessionStorage.removeItem('ecommerceAppToken');
-    window.location = "/#/";
-    waitingDialog.hide();
-    return update(state, {$set: false});
-    
-  } 
-  return state;
-}
-
-const loggedOutPagesReducer = (state = initialState.loggedOutPages, action) => {
-  return state;
-}
-
-const loggedInPagesReducer = (state = initialState.loggedInPages, action) => {
-  return state;
+  
 }
 
 const wishlistReducer = (state = initialState.wishlist, action) => {
@@ -127,17 +85,70 @@ const resultsReducer = (state = initialState.results, action) => {
   return state;
 }
 
+const sessionReducer = (state = initialState.session, action) => {
+  if (action.type === actions.NEW_USER_SUCCESS) {
+    waitingDialog.hide();
+    window.location = "/#/";
+    bootbox.alert('Congratulations! Your username has been added. Please log in.');
+    return state;
+    
+  } else if (action.type === actions.NEW_USER_ERROR) {
+    waitingDialog.hide();
+    if (action.err.response.status === 409) {
+      bootbox.alert('That username is already taken. Please choose another.');
+    } else {
+      bootbox.alert('There was a server error. Please try again later.');
+    }
+    return state;
+    
+  } else if (action.type === actions.LOGIN_SUCCESS) {
+    waitingDialog.hide();
+    window.location = "/#/search";
+    return update(state, {
+      isLoggedIn: {$set: true},
+      username: {$set: action.data.user}
+    });
+    
+  } else if (action.type === actions.LOGIN_ERROR) {
+    waitingDialog.hide();
+    if (action.err.response.status === 401) {
+      bootbox.alert('Incorrect username or password.');
+    } else {
+      bootbox.alert('There was a server error. Please try again later.');
+    }
+    return state;
+    
+  } else if (action.type === actions.LOGOUT) {
+    sessionStorage.removeItem('ecommerceAppToken');
+    window.location = "/#/";
+    waitingDialog.hide();
+    return update(state, {
+      isLoggedIn: {$set: false}
+    });
+    
+  } 
+  return state;
+}
+
 const usernameReducer = (state = initialState.username, action) => {
   return state;
 }
 
+
+const loggedOutPagesReducer = (state = initialState.loggedOutPages, action) => {
+  return state;
+}
+
+const loggedInPagesReducer = (state = initialState.loggedInPages, action) => {
+  return state;
+}
+
 const reducer = combineReducers({
-    isLoggedIn: loggedInReducer,
     loggedOutPages: loggedOutPagesReducer,
     loggedInPages: loggedInPagesReducer,
     wishlist: wishlistReducer,
     results: resultsReducer,
-    username: usernameReducer
+    session: sessionReducer
 });
 
 exports.reducer = reducer;

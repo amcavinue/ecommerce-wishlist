@@ -24,8 +24,6 @@ const ProductCard = React.createClass({
   deleteItem() {
     bootbox.confirm('Are you sure you want to delete this item?', (result) => {
       if (result) {
-        console.log(this.props.username, this.props.asin, 27);
-        
         store.dispatch(
           actions.fetchRemoveProduct(this.props.username, this.props.asin)
         );

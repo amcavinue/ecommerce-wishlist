@@ -40,7 +40,7 @@ const ProductSearch = React.createClass({
             cardType='search'
             link={product.link}
             asin={product.asin}
-            username={this.props.username}
+            username={this.props.session.username}
             title={product.title} 
             img={product.img} 
             price={product.price} 
@@ -77,12 +77,11 @@ const ProductSearch = React.createClass({
 
 const mapStateToProps = (state, props) => {
   return {
-    isLoggedIn: state.isLoggedIn,
     loggedOutPages: state.loggedOutPages,
     loggedInPages: state.loggedInPages,
     wishlist: state.wishlist,
     results: state.results,
-    username: state.username
+    session: state.session
   };
 };
 
