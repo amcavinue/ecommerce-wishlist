@@ -106,7 +106,7 @@ const sessionReducer = (state = initialState.session, action) => {
     window.location = "/#/search";
     return update(state, {
       isLoggedIn: {$set: true},
-      username: {$set: action.data.user}
+      username: {$set: action.data.user.username}
     });
     
   } else if (action.type === actions.LOGIN_ERROR) {

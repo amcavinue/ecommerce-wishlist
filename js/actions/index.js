@@ -171,6 +171,9 @@ const fetchProduct = (asin) => {
   return (dispatch) => {
     let init = {
       method: 'GET',
+      headers: new Headers({
+        'Authorization': 'Bearer ' + sessionStorage.getItem('ecommerceAppToken')
+      })
     };
     
     return fetch('/api/products/asins/' + encodeURIComponent(asin), init)
@@ -219,6 +222,9 @@ const fetchWishlist = (username) => {
   return (dispatch) => {
     let init = {
       method: 'GET',
+      headers: new Headers({
+        'Authorization': 'Bearer ' + sessionStorage.getItem('ecommerceAppToken')
+      })
     };
     
     return fetch('/api/wishlists/' + encodeURIComponent(username), init)
@@ -268,7 +274,8 @@ const fetchAddProduct = (username, product) => {
     let init = {
       method: 'POST',
       headers: new Headers({
-          "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        'Authorization': 'Bearer ' + sessionStorage.getItem('ecommerceAppToken')
       }),
       body: JSON.stringify({
         item: product
@@ -321,6 +328,9 @@ const fetchRemoveProduct = (username, asin) => {
   return (dispatch) => {
     let init = {
       method: 'DELETE',
+      headers: new Headers({
+        'Authorization': 'Bearer ' + sessionStorage.getItem('ecommerceAppToken')
+      })
     };
     
     return fetch('/api/wishlists/' + encodeURIComponent(username) + '/' + encodeURIComponent(asin), init)

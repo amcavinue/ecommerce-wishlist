@@ -36,9 +36,9 @@ app.get('/api/restricted', authenticate, routes.restricted);
 app.get('/api/products/:query', routes.products);
 app.get('/api/products/asins/:asin', routes.asins);
 
-app.get('/api/wishlists/:user', routes.getWishlist);
-app.post('/api/wishlists/:user/', routes.addWishlistItem);
-app.delete('/api/wishlists/:user/:asin/', routes.removeWishlistItem);
+app.get('/api/wishlists/:user', authenticate, routes.getWishlist);
+app.post('/api/wishlists/:user/', authenticate, routes.addWishlistItem);
+app.delete('/api/wishlists/:user/:asin/', authenticate, routes.removeWishlistItem);
 
 /**
  * Run the server
