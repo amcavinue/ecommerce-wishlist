@@ -80,6 +80,53 @@ describe('Wishlist Server', () => {
     }, 1000); // Wait for 1 second to make sure not to hit the Amazon API limit.
   });
   
+  it('should add an item to the wishlist', function(done) {
+    chai.request(app)
+      .post('/api/wishlists/testUser0')
+      .set('Authorization', 'Bearer ' + webToken)
+      .send({
+        item: {
+          title: 'test item',
+          img: 'test.jpg',
+          price: '$000.00',
+          description: [
+            'abc',
+            'def'
+          ],
+          asin: '12345',
+          link: 'www.test.com'
+        }
+      })
+      .end(function(err, res) {
+        should.equal(err, null);
+        res.should.have.status(201);
+        done();
+      });
+  });
+  
+  it('should get the wishlist with the single item', function(done) {
+    chai.request(app)
+      .get('/api/wishlists/testUser0')
+      .set('Authorization', 'Bearer ' + webToken)
+      .end(function(err, res) {
+        should.equal(err, null);
+        res.should.have.status(200);
+        expect(res.body[0].asin).to.equal('12345');
+        done();
+      });
+  });
+  
+  it('should remove an item from the wishlist', function(done) {
+    chai.request(app)
+      .delete('/api/wishlists/testUser0/12345')
+      .set('Authorization', 'Bearer ' + webToken)
+      .end(function(err, res) {
+        should.equal(err, null);
+        res.should.have.status(200);
+        done();
+      });
+  });
+  
   after((done) => {
     User.findOneAndRemove({username: 'testUser0'}).exec();
     done();

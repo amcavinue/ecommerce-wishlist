@@ -26,7 +26,7 @@ const EcommerceApp = React.createClass({
     let currPath = this.props.location.pathname;
     let pages;
     
-    if (appState.isLoggedIn) {
+    if (appState.session.isLoggedIn) {
       pages = appState.loggedInPages;
     } else {
       pages = appState.loggedOutPages;
@@ -61,7 +61,7 @@ const EcommerceApp = React.createClass({
                 <span className="icon-bar"></span>
                 <span className="icon-bar"></span>
               </button>
-              <Link className="navbar-brand" to={appState.isLoggedIn ? '/search' : '/'}>Ecommerce Wishlist</Link>
+              <Link className="navbar-brand" to={appState.session.isLoggedIn ? '/search' : '/'}>Ecommerce Wishlist</Link>
             </div>
         
             <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -97,11 +97,11 @@ const EcommerceApp = React.createClass({
 
 const mapStateToProps = (state, props) => {
   return {
-    isLoggedIn: state.isLoggedIn,
     loggedOutPages: state.loggedOutPages,
     loggedInPages: state.loggedInPages,
     wishlist: state.wishlist,
     results: state.results,
+    session: state.session
   };
 };
 
