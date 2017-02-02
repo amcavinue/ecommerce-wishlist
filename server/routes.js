@@ -229,7 +229,6 @@ const removeWishlistItem = (req, res) => {
 exports.newUser = newUser;
 exports.generateToken = generateToken;
 exports.login = login;
-exports.restricted = restricted;
 exports.products = products;
 exports.asins = asins;
 exports.getWishlist = getWishlist;

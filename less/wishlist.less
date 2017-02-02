@@ -1,3 +1,23 @@
 .wishlist-component {
-  
+  .list-grid-view {
+    padding: 0;
+    
+    .glyphicon { 
+      margin-right:5px; 
+    }
+    
+    #products {
+      padding: 0 1em;
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .wishlist-component .list-grid-view #products .list-group-item .list-group-image {
+    max-width: none;
+    max-height: 250px;
+    float: none;
+    margin-right: auto;
+    margin-bottom: 1em;
+  }
 }
