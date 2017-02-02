@@ -12,18 +12,22 @@ const initialState = {
     results: null,
     loggedOutPages: [
       {
-        text: 'Login',
-        path: '/login'  // All paths must have preceding '/'.
+        text: 'Sign Up',
+        path: '/newuser' // All paths must have preceding '/'.
       },
       {
-        text: 'Sign Up',
-        path: '/newuser'
+        text: 'Login',
+        path: '/login'
       }
     ], // The ordering of these pages affects the order of the menu.
     loggedInPages: [
       {
         text: 'Product Search',
         path: '/search'
+      },
+      {
+        text: 'Your Wishlist',
+        path: '/wishlist'
       },
       {
         text: 'Logout',
@@ -129,11 +133,6 @@ const sessionReducer = (state = initialState.session, action) => {
   } 
   return state;
 }
-
-const usernameReducer = (state = initialState.username, action) => {
-  return state;
-}
-
 
 const loggedOutPagesReducer = (state = initialState.loggedOutPages, action) => {
   return state;
