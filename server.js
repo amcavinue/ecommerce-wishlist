@@ -38,7 +38,7 @@ app.get('/api/products/asins/:asin', routes.asins);
 
 app.get('/api/wishlists/:user', routes.getWishlist);
 app.post('/api/wishlists/:user/', routes.addWishlistItem);
-app.delete('/api/wishlists/:user/', routes.removeWishlistItem);
+app.delete('/api/wishlists/:user/:asin/', routes.removeWishlistItem);
 
 /**
  * Run the server

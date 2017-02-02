@@ -316,12 +316,9 @@ const fetchRemoveProduct = (username, asin) => {
   return (dispatch) => {
     let init = {
       method: 'DELETE',
-      body: {
-        asin: asin
-      }
     };
     
-    return fetch('/api/wishlists/' + encodeURIComponent(username), init)
+    return fetch('/api/wishlists/' + encodeURIComponent(username) + '/' + encodeURIComponent(asin), init)
     .then(function(response) {
       // If any response other than successful.
       if (response.status < 200 || response.status >= 300) {

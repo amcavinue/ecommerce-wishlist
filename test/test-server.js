@@ -116,8 +116,7 @@ describe('Wishlist Server', () => {
   
   it('should remove an item from the wishlist', function(done) {
     chai.request(app)
-      .delete('/api/wishlists/testUser0')
-      .send({asin: '12345'})
+      .delete('/api/wishlists/testUser0/12345')
       .end(function(err, res) {
         should.equal(err, null);
         res.should.have.status(200);

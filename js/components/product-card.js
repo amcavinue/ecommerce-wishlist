@@ -21,11 +21,25 @@ const ProductCard = React.createClass({
     }
     return result;
   },
+  deleteItem() {
+    bootbox.confirm('Are you sure you want to delete this item?', (result) => {
+      if (result) {
+        console.log(this.props.username, this.props.asin, 27);
+        
+        store.dispatch(
+          actions.fetchRemoveProduct(this.props.username, this.props.asin)
+        );
+      }
+    });
+  },
+  addItem() {
+    
+  },
   getButtons() {
     if (this.props.cardType === 'wishlist') {
-      return <a className="caption-item btn btn-danger" href="">Delete</a>;
+      return <a className="caption-item btn btn-danger" onClick={this.deleteItem}>Delete</a>;
     } else if (this.props.cardType === 'search') {
-      return <a className="caption-item btn btn-success add-to-wishlist" href="">Add to wishlist</a>
+      return <a className="caption-item btn btn-success add-to-wishlist" onClick={this.addItem}>Add to wishlist</a>
     }
   },
   render() {
