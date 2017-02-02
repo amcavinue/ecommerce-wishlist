@@ -112,10 +112,6 @@ const login = (req, res) => {
   });
 };
 
-const restricted = (req, res) => {
-  res.status(200).json(req.user);
-};
-
 // Client for accessing the Amazon Product Advertising API.
 const client = amazon.createClient({
   awsTag: process.env.AWS_TAG,
@@ -146,10 +142,8 @@ const products = (req, res) => {
     itemPage: 1,
     responseGroup: 'ItemAttributes,Images'
   }).then(function(results){
-    // console.log(util.inspect(results, {showHidden: false, depth: null}), 33);
     return res.status(200).json(formatAmazonData(results));
   }).catch(function(err){
-    console.log(err, 153);
     return res.status(400).json(err);
   });
 };
@@ -160,10 +154,8 @@ const asins = (req, res) => {
     itemId: req.params.asin,
     responseGroup: 'ItemAttributes,Images'
   }).then(function(results) {
-    // console.log(util.inspect(results, {showHidden: false, depth: null}), 47);
     return res.status(200).json(formatAmazonData(results));
   }).catch(function(err) {
-    // console.log(err, 50);
     return res.status(400).json(err);
   });
 };

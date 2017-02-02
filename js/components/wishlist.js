@@ -11,14 +11,7 @@ const actions = require('../actions/index');
 const ProductCard = require('./product-card');
 
 const Wishlist = React.createClass({
-  getInitialState() {
-    return {
-      data1: null
-    };
-  },
   componentDidMount() {
-    console.log(store.getState(), 20);
-    
     store.dispatch(
       actions.fetchWishlist(store.getState().session.username)
     );

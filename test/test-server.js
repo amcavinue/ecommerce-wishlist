@@ -43,18 +43,6 @@ describe('Wishlist Server', () => {
       });
   });
   
-  it('should validate a restricted endpoint', (done) => {
-    chai.request(app)
-      .get('/api/restricted')
-      .set('Authorization', 'Bearer ' + webToken)
-      .send({'username': 'testUser0', 'password': 'testUser0'})
-      .end(function(err, res) {
-        should.equal(err, null);
-        res.should.have.status(200);
-        done();
-      });
-  });
-  
   it('should get data from Amazon', (done) => {
     chai.request(app)
       .get('/api/products/' + encodeURIComponent('soft towels'))
