@@ -35,7 +35,7 @@ const ProductCard = React.createClass({
           <div className="thumbnail">
             <img className="list-group-image" src={this.props.img} alt="" />
             <div className="caption">
-              <h4 className="caption-item list-group-item-heading">{this.props.title}</h4>
+              <h4 className="caption-item list-group-item-heading"><a href={this.props.link} target="_blank">{this.props.title}</a></h4>
               <ul className="caption-item list-group-item-text">
                 {this.getDescriptions(this.props.description)}
               </ul>

@@ -32,6 +32,7 @@ const Wishlist = React.createClass({
         products.push(
           <ProductCard
             key={i}
+            link={product.link}
             cardType='wishlist'
             title={product.title} 
             img={product.img} 
