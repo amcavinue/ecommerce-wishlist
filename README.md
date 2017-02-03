@@ -24,7 +24,7 @@ The live site can be seen at: [https://powerful-island-41601.herokuapp.com/#/](h
  - The entire application is unit tested, providing software that is reliable and free of bugs.
 
 ### Technical
-- The app is built mainly with the MERN stack and makes use of MongoDB and Mongoose, Express, React and Redux, and Node.js. Helper libraries such as Bootstrap, and Passport.js.
+- The app is built mainly with the MERN stack and makes use of MongoDB and Mongoose, Express, React and Redux, and Node.js. Helper libraries such as Bootstrap, and Passport.js were also used.
 - It utilizes ES6 features of JavaScript, making the code easier to read and maintain. These features are transpiled using Babel to work on all browsers.
 - All front-end components and back-end API endpoints have been tested using Mocha, and the production version passes all tests.
 - The front end is fully responsive and follows clean usability principles.
