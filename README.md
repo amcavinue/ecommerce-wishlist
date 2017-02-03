@@ -2,7 +2,7 @@
 A well-engineered app that lets you create a custom wishlist from your favorite products.
 
 In-progress tasks during development.
-![Screenshot](https://raw.githubusercontent.com/amcavinue/master/ecommerce-wishlist/kanbanflow-combined.jpg)
+![Screenshot](https://raw.githubusercontent.com/amcavinue/ecommerce-wishlist/master/kanbanflow-combined.jpg)
 
 ### Overview
 The goal of this app was to exercise full-stack development skills by creating an application that utilizes the entire MERN stack.
