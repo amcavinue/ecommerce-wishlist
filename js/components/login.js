@@ -37,6 +37,7 @@ const Login = React.createClass({
     return (
       <div className="login-component">
         <h1 className="text-center">Login to the Ecommerce App</h1>
+        <span>A test account is available with username and password: <strong>testUser1</strong></span>
         <div className="row">
           <div className="col-xs-12 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
             <Validation.components.Form className="login-component-form" onSubmit={this.submit}>
