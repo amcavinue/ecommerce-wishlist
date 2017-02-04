@@ -71,7 +71,7 @@ const EcommerceApp = React.createClass({
             </div>{/* /.navbar-collapse */}
           </div>{/* /.container-fluid */}
         </nav>
-        
+
         <div className="modal fade" id="logout-modal" tabIndex="-1" role="dialog">
           <div className="modal-dialog" role="document">
             <div className="modal-content">
@@ -86,8 +86,8 @@ const EcommerceApp = React.createClass({
             </div>
           </div>
         </div>
-        
-        <div className="container">
+
+        <div className="container-fluid page-container">
           {this.props.children}
         </div>
       </div>

@@ -91,7 +91,7 @@ const itemsReducer = (state = initialState.items, action) => {
     
   } else if (action.type === actions.PRODUCTS_ERROR) {
     waitingDialog.hide();
-    bootbox.alert('There was an error connecting to Amazon. Please try again later. ' + action.err);
+    bootbox.alert('There was an error connecting to Amazon. Please try again later.');
     return state;
     
   } else if (action.type === actions.PRODUCT_SUCCESS) {
