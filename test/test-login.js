@@ -26,7 +26,7 @@ describe('Login Component', () => {
     TestUtils.isCompositeComponent(result);
     
     // Test nested elements.
-    expect(result.props.children.length).to.equal(3);
-    expect(result.props.children[0].type).to.equal('h1');
+    expect(result.props.children.length).to.equal(2);
+    expect(result.props.children[0].type).to.equal('section');
   });
 });
