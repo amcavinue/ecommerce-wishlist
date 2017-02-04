@@ -39,55 +39,56 @@ const Login = React.createClass({
         <section className="login-header">
           <h1 className="header-title">A solution for all of your wishlist needs.</h1>
         </section>
-      
-      
-        <h2 className="text-center">Login to the Ecommerce App</h2>
-        <span>A test account is available with username and password: <strong>testUser1</strong></span>
-        <div className="row">
-          <div className="col-xs-12 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
-            <Validation.components.Form className="login-component-form" onSubmit={this.submit}>
-              <fieldset>
-                <div className="form-group">
-                  <label className="" htmlFor="username">Username</label>
-                  <Validation.components.Input 
-                    className="form-control" 
-                    type="text" 
-                    id="username" 
-                    name="username" 
-                    value=""
-                    validations={['required']} 
-                    onChange={this.updateUsername}
-                    required 
-                  />
-                </div>
-                
-                <div className="form-group">
-                  <label className="" htmlFor="password">Password</label>
-                  <Validation.components.Input 
-                    className="form-control" 
-                    type="password" 
-                    id="password" 
-                    name="password" 
-                    value=""
-                    validations={['required']} 
-                    onChange={this.updatePassword}
-                    required 
-                  />
-                </div>
-              </fieldset>
-          
-              <Validation.components.Button 
-              id="login-submit" 
-              type="submit" 
-              name="submit" 
-              className="btn btn-primary col-xs-12">
-                Submit
-              </Validation.components.Button>
-            </Validation.components.Form>
+        
+        <div className="login-container">
+          <h2 className="text-center">Login to the Ecommerce App</h2>
+          <span>A test account is available with username and password: <strong>testUser1</strong></span>
+          <div className="row">
+            <div className="col-xs-12 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
+              <Validation.components.Form className="login-component-form" onSubmit={this.submit}>
+                <fieldset>
+                  <div className="form-group">
+                    <label className="" htmlFor="username">Username</label>
+                    <Validation.components.Input 
+                      className="form-control" 
+                      type="text" 
+                      id="username" 
+                      name="username" 
+                      value=""
+                      validations={['required']} 
+                      onChange={this.updateUsername}
+                      required 
+                    />
+                  </div>
+                  
+                  <div className="form-group">
+                    <label className="" htmlFor="password">Password</label>
+                    <Validation.components.Input 
+                      className="form-control" 
+                      type="password" 
+                      id="password" 
+                      name="password" 
+                      value=""
+                      validations={['required']} 
+                      onChange={this.updatePassword}
+                      required 
+                    />
+                  </div>
+                </fieldset>
             
-            <Link className="new-account-link" to={'/newuser'}>
-              Don't have an account? Create one here.
-            </Link>
+                <Validation.components.Button 
+                id="login-submit" 
+                type="submit" 
+                name="submit" 
+                className="btn btn-primary col-xs-12">
+                  Submit
+                </Validation.components.Button>
+              </Validation.components.Form>
+              
+              <Link className="new-account-link" to={'/newuser'}>
+                Don't have an account? Create one here.
+              </Link>
+            </div>
           </div>
         </div>
       </div>
