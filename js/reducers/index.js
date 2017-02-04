@@ -9,7 +9,11 @@ const initialState = {
       username: false,
     },
     wishlist: null,
-    results: null,
+    items: {
+      results: null,
+      query: null,
+    },
+    query: null,
     loggedOutPages: [
       {
         text: 'Sign Up',
@@ -69,14 +73,25 @@ const wishlistReducer = (state = initialState.wishlist, action) => {
   return state;
 }
 
-const resultsReducer = (state = initialState.results, action) => {
+const itemsReducer = (state = initialState.items, action) => {
   if (action.type === actions.PRODUCTS_SUCCESS) {
     waitingDialog.hide();
-    return update(state, {$set: action.data});
+    if (state.results === null || state.query !== action.query) {
+      return update(state, {
+        results: {$set: action.data},
+        query: {$set: action.query}
+      });
+    } else {
+      let results = state.results.concat(action.data);
+      return update(state, {
+        results: {$set: results},
+        query: {$set: action.query}
+      });
+    }
     
   } else if (action.type === actions.PRODUCTS_ERROR) {
     waitingDialog.hide();
-    bootbox.alert('There was an error connecting to Amazon. Please try again later.');
+    bootbox.alert('There was an error connecting to Amazon. Please try again later. ' + action.err);
     return state;
     
   } else if (action.type === actions.PRODUCT_SUCCESS) {
@@ -146,7 +161,7 @@ const reducer = combineReducers({
     loggedOutPages: loggedOutPagesReducer,
     loggedInPages: loggedInPagesReducer,
     wishlist: wishlistReducer,
-    results: resultsReducer,
+    items: itemsReducer,
     session: sessionReducer
 });
 

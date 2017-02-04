@@ -13,7 +13,8 @@ const ProductCard = require('./product-card');
 const ProductSearch = React.createClass({
   getInitialState() {
     return {
-      query: ''
+      query: store.getState().items.query || '',
+      page: 1
     };
   },
   updateQuery(e) {
@@ -24,12 +25,13 @@ const ProductSearch = React.createClass({
   submit(e) {
     e.preventDefault();
     waitingDialog.show();
+    this.state.page = 1;
     store.dispatch(
-      actions.fetchProducts(this.state.query)
+      actions.fetchProducts(this.state.query, this.state.page)
     );
   },
   getProducts() {
-    let results = this.props.results;
+    let results = this.props.items.results;
     let products = [];
     
     if (results) {
@@ -48,9 +50,20 @@ const ProductSearch = React.createClass({
           />
         );
       });
+      
+      products.push(
+        <button key="more-results" className="more-results btn btn-info" type="button" onClick={this.getMoreProducts}>Get more results</button>
+      );
     }
     
     return products;
+  },
+  getMoreProducts() {
+    waitingDialog.show();
+    this.state.page++;
+    store.dispatch(
+      actions.fetchProducts(this.state.query, this.state.page)
+    );
   },
   render() {
     return (
@@ -60,13 +73,13 @@ const ProductSearch = React.createClass({
         <form className="form-inline search-form" onSubmit={this.submit}>
           <div className="form-group">
             <label htmlFor="name">Search:</label>
-            <input className="form-control" ref={(input) => this.searchBox = input } type="text" id="search" name="search" onChange={this.updateQuery} required/>
+            <input className="form-control" ref={(input) => this.searchBox = input } type="text" id="search" name="search" onChange={this.updateQuery} value={this.state.query} required/>
           </div>
           <input className="btn btn-primary" type="submit" value="Submit" name="submit" />
         </form>
         
         <div className="container list-grid-view">
-            <div id="products" className="row list-group">
+            <div id="products" className="row list-group" ref={(input) => {this.products = input; }}>
               {this.getProducts()}
             </div>
         </div>
@@ -80,7 +93,7 @@ const mapStateToProps = (state, props) => {
     loggedOutPages: state.loggedOutPages,
     loggedInPages: state.loggedInPages,
     wishlist: state.wishlist,
-    results: state.results,
+    items: state.items,
     session: state.session
   };
 };

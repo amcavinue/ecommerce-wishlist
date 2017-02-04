@@ -139,7 +139,7 @@ const formatAmazonData = (data) => {
 const products = (req, res) => {
   client.itemSearch({
     keywords: req.params.query,
-    itemPage: 1,
+    itemPage: req.params.page,
     responseGroup: 'ItemAttributes,Images'
   }).then(function(results){
     return res.status(200).json(formatAmazonData(results));

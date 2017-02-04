@@ -45,7 +45,7 @@ describe('Wishlist Server', () => {
   
   it('should get data from Amazon', (done) => {
     chai.request(app)
-      .get('/api/products/' + encodeURIComponent('soft towels'))
+      .get('/api/products/' + encodeURIComponent('soft towels') + '/1')
       .end(function(err, res) {
         should.equal(err, null);
         res.should.have.status(200);
@@ -58,8 +58,9 @@ describe('Wishlist Server', () => {
     this.timeout(3000);
     setTimeout(() => {
       chai.request(app)
-      .get('/api/products/asins/' + encodeURIComponent('B00GXUVOME'))
+      .get('/api/products/' + encodeURIComponent('B00GXUVOME'))
       .end(function(err, res) {
+        console.log(err);
         should.equal(err, null);
         res.should.have.status(200);
         should.equal(res.body[0].asin, 'B00GXUVOME');

@@ -31,8 +31,8 @@ app.use(passport.initialize());
 app.post('/api/users', routes.newUser);
 app.post('/api/login', passport.authenticate('local', {session: false}), routes.generateToken, routes.login);
 
-app.get('/api/products/:query', routes.products);
-app.get('/api/products/asins/:asin', routes.asins);
+app.get('/api/products/:query/:page', routes.products);
+app.get('/api/products/:asin', routes.asins);
 
 app.get('/api/wishlists/:user', authenticate, routes.getWishlist);
 app.post('/api/wishlists/:user/', authenticate, routes.addWishlistItem);

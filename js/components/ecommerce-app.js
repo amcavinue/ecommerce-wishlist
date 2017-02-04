@@ -100,7 +100,7 @@ const mapStateToProps = (state, props) => {
     loggedOutPages: state.loggedOutPages,
     loggedInPages: state.loggedInPages,
     wishlist: state.wishlist,
-    results: state.results,
+    items: state.items,
     session: state.session
   };
 };

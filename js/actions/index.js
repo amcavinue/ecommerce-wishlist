@@ -119,13 +119,13 @@ function logout() {
   };
 }
 
-const fetchProducts = (query) => {
+const fetchProducts = (query, page) => {
   return (dispatch) => {
     let init = {
       method: 'GET',
     };
     
-    return fetch('/api/products/' + encodeURIComponent(query), init)
+    return fetch('/api/products/' + encodeURIComponent(query) + '/' + encodeURIComponent(page), init)
     .then(function(response) {
       // If any response other than successful.
       if (response.status < 200 || response.status >= 300) {
@@ -140,7 +140,7 @@ const fetchProducts = (query) => {
     })
     .then(function(data) {
       return dispatch(
-        productsSuccess(data)
+        productsSuccess(data, query)
       );
     })
     .catch(function(error) {
@@ -152,10 +152,11 @@ const fetchProducts = (query) => {
 };
 
 const PRODUCTS_SUCCESS = 'PRODUCTS_SUCCESS';
-function productsSuccess(data) {
+function productsSuccess(data, query) {
     return {
         type: PRODUCTS_SUCCESS,
-        data: data
+        data: data,
+        query: query
     };
 }
 
@@ -176,7 +177,7 @@ const fetchProduct = (asin) => {
       })
     };
     
-    return fetch('/api/products/asins/' + encodeURIComponent(asin), init)
+    return fetch('/api/products/' + encodeURIComponent(asin), init)
     .then(function(response) {
       // If any response other than successful.
       if (response.status < 200 || response.status >= 300) {

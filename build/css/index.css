@@ -40,6 +40,7 @@
 }
 .product-search-component .list-grid-view #products {
   padding: 0 1em;
+  text-align: center;
 }
 @media (max-width: 768px) {
   .product-search-component .search-form {
@@ -54,6 +55,9 @@
     margin-right: auto;
     margin-bottom: 1em;
   }
+}
+.product-card-component {
+  text-align: left;
 }
 .product-card-component .item .thumbnail {
   margin-bottom: 20px;
