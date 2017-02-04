@@ -112,7 +112,7 @@
 }
 .product-card-component .list-group-item:nth-of-type(odd):hover,
 .product-card-component .list-group-item:hover {
-  background: #428bca;
+  background: #b6c8d8;
 }
 .product-card-component .list-group-item:before,
 .product-card-component .list-group-item:after {
