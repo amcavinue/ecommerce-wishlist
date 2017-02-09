@@ -1,6 +1,7 @@
 # Ecommerce Wishlist App
 A well-engineered app that lets you create a custom wishlist from your favorite products.
 
+![Screenshot](https://raw.githubusercontent.com/amcavinue/ecommerce-wishlist/master/ecommerce-wishlist-combined.jpg)
 In-progress tasks during development.
 ![Screenshot](https://raw.githubusercontent.com/amcavinue/ecommerce-wishlist/master/kanbanflow-combined.jpg)
 
