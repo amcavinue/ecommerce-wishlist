@@ -55,6 +55,7 @@ const wishlistReducer = (state = initialState.wishlist, action) => {
     
   } else if (action.type === actions.ADD_PRODUCT_SUCCESS) {
     waitingDialog.hide();
+    bootbox.alert('The product has been added to your wishlist.');
     return update(state, {$set: action.data});
     
   } else if (action.type === actions.ADD_PRODUCT_ERROR) {
